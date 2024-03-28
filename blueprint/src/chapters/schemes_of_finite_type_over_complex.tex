@@ -1,0 +1,12 @@
+\chapter{Schemes of finite type over $\complex$}
+
+\begin{definition}[Schemes locally of finite type over $\complex$]
+    A scheme $\schemeOf{X}$ is locally of finite type $C$ is the 
+    data
+    \begin{enumerate}
+        \item indexing set: $I$;
+        \item rings: $R : I \to \cring$ such that for each $i \in I$, $R_i$ is a finitely generated $\complex$-algebra;
+        \item open immersions: for each $i \in I$, $\iota_i: \spec{R_i} \to \schemeOf{X}$;
+        \item covering: $c : X \to I$ such that for each $x \in X$, $c_x \in \range{\iota_i}$;
+    \end{enumerate}
+\end{definition}

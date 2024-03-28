@@ -4,3 +4,6 @@
 *.paux
 lean_decls
 *~
+*.log
+*.synctex.gz
+*.aux
