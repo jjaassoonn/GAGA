@@ -6,32 +6,4 @@
 % the current file can be a simple sequence of \input. Otherwise It
 % can start with a \section or \chapter for instance.
 
-\section{Commutative diagram}
-I cannot get {\tt tikzcd} working
-$$
-    \begin{tikzcd}
-        A \arrow[r, "f"] \arrow[d, "g"'] & B \arrow[d, "h"] \\
-        C \arrow[r, "i"'] & D
-    \end{tikzcd}
-$$
-This is a shame
-
-\begin{tikzcd}
-  {}   & \ker \pi' = T_mM \times \{0_p\} \ar[d, hookrightarrow] \ar["T_m F_p", dr] &  &  \\
-  \ker \pi = T_\sigma\Sigma \ar[r] \ar[r] \ar[r] \ar[r, hookrightarrow] &
-  T_m M \times T_p P \ar["\pi", bend right, swap, rr] \ar["\pi'", d]  \ar["T_\sigma F",
-  r, swap]& T_{F(\sigma)} N \ar["\rho", r, twoheadrightarrow]& \nu_{F(\sigma)} A \\
-   & T_p P &  &
-\end{tikzcd}
-
-% what about {\tt xymatrix}
-% \begin{equation*}
-% \xymatrix{ A \ar[r] & B \ar[d] \\
-%            D \ar[u] & C \ar[l] }
-% \end{equation*}
-
-% $$
-% \begin{CD}
-% A @>f>> B\\
-% \end{CD}
-% $$
+\include{chapters/introduction}

@@ -3,3 +3,4 @@
 /blueprint/web
 *.paux
 lean_decls
+*~

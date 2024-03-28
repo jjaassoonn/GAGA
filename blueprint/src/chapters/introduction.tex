@@ -1,0 +1,23 @@
+\chapter{Introduction}
+
+In this short introductory section, we will vague on many terminologies. Hopefully, the vagueness will resolved in later chapters.
+
+\begin{itemize}
+\item Let $\schemeOf{X}$ be a scheme of finite type over $\complex$, we associate an analytic object $\anOfSchemeOf{X}$
+with an embedding $(\lambda_{X}, \lambda^{*}_{X}) : \anOfSchemeOf{X} \to \anOfSchemeOf{X}$.
+\item Let $(X, \mathcal{O}_X)$ and $(Y, \mathcal{O}_Y)$ be a scheme of finite type over $\complex$ and $\Phi : (X, \mathcal{O}_x) \to (Y, \mathcal{O}_Y)$ be a morphism of schemes. Then there is $\an{\Phi} : \anOfSchemeOf{X} \to \anOfSchemeOf{Y}$ such that:
+\[
+\begin{tikzcd}
+\anOfSchemeOf{X} \arrow[r, "{\an \Phi}"]\arrow[d, "{(\lambda_{X}, \lambda^{*}_{X})}"] & \anOfSchemeOf{Y} \ar[d, "{(\lambda_{Y}, \lambda^{*}_{Y})}"]\\
+\schemeOf{X} \ar[r, "\Phi"] & \schemeOf{Y}
+\end{tikzcd}
+\]
+commutes.
+\end{itemize}
+
+This is called the analytification functor.
+
+
+
+
+
