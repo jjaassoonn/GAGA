@@ -6,8 +6,8 @@ to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCo
 \begin{definition}[Schemes locally of finite type over $\complex$]
   \label{def:SchemeLocallyOfFiniteType}
   \lean{SchemeOfLocallyOfFiniteType}
-  A scheme $\schemeOf{X}$ is locally of finite type over $\complex$ is the
-    following data
+  A scheme $\schemeOf{X}$ is locally of finite type over $\complex$ is a scheme over $\complex$ togather
+  with the following data
     \begin{enumerate}
         \item indexing set: $I$;
         \item a family of finitely generated algebras: $R : I \to \fgalgebra{\complex}$;
@@ -22,8 +22,12 @@ to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCo
   \lean{SchemeOfFiniteType}
   \uses{SchemeLocallyOfFiniteType}
   A scheme $\schemeOf{X}$ is of finite type over $\complex$ if it is a scheme locally of finite type over $\complex$
-  and has finite indexing set.
+  and has finite indexing set; or equivalently $X$ is quasi-compact.
 \end{definition}
+
+\begin{remark}
+  If we are only considering schems (locally of) finite type over $\complex$, any morphism of ringed space over $\complex$ is automatically a morphism of {\em locally} ringed space over $\complex$.
+\end{remark}
 
 
 \begin{proposition}
@@ -31,4 +35,12 @@ to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCo
 \end{proposition}
 \begin{proof}
 TBD
+\end{proof}
+
+
+\begin{proposition}
+  If $\schemeOf{X}$ is a scheme locally of finite type over $\complex$, then the set of closed points of $X$ is in bijection with $X(\complex) := \Hom\left(\spec{\complex}, \schemeOf{X}\right)$.
+\end{proposition}
+\begin{proof}
+  TBD
 \end{proof}
