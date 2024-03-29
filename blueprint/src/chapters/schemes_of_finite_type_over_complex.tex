@@ -1,12 +1,34 @@
 \chapter{Schemes of finite type over $\complex$}
 
+We introduce the notion of schemes of finite type over $\complex$ first, we require the definition to be constructive similar
+to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCover}.
+
 \begin{definition}[Schemes locally of finite type over $\complex$]
-    A scheme $\schemeOf{X}$ is locally of finite type $C$ is the 
-    data
+  \label{def:SchemeLocallyOfFiniteType}
+  \lean{SchemeOfLocallyOfFiniteType}
+  A scheme $\schemeOf{X}$ is locally of finite type over $\complex$ is the
+    following data
     \begin{enumerate}
         \item indexing set: $I$;
-        \item rings: $R : I \to \cring$ such that for each $i \in I$, $R_i$ is a finitely generated $\complex$-algebra;
-        \item open immersions: for each $i \in I$, $\iota_i: \spec{R_i} \to \schemeOf{X}$;
-        \item covering: $c : X \to I$ such that for each $x \in X$, $c_x \in \range{\iota_i}$;
+        \item a family of finitely generated algebras: $R : I \to \fgalgebra{\complex}$;
+        \item a family of open immersions: for each $i \in I$, $\iota_i: \spec{R_i} \to \schemeOf{X}$;
+        \item covering: $c : X \to I$ such that for each $x \in X$, $c_x \in \range{\iota_i}$.
     \end{enumerate}
 \end{definition}
+
+
+\begin{definition}[Scheme of finite type over $\complex$]
+  \label{def:SchemeOfFiniteType}
+  \lean{SchemeOfFiniteType}
+  \uses{SchemeLocallyOfFiniteType}
+  A scheme $\schemeOf{X}$ is of finite type over $\complex$ if it is a scheme locally of finite type over $\complex$
+  and has finite indexing set.
+\end{definition}
+
+
+\begin{proposition}
+  Let $\schemeOf{X}$ be a scheme locally of finite type over $\complex$, let $U \subseteq X$ be an open subset, then $(U, \mathcal{O}_{X}\mid_{U})$ is a scheme locally of finite type over $\complex$.
+\end{proposition}
+\begin{proof}
+TBD
+\end{proof}
