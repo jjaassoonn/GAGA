@@ -1,11 +1,13 @@
 \chapter{Schemes of finite type over $\complex$}
 
+\section{Basic Definitions}
+
 We introduce the notion of schemes of finite type over $\complex$ first, we require the definition to be constructive similar
 to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCover}.
 
 \begin{definition}[Schemes locally of finite type over $\complex$]
   \label{def:SchemeLocallyOfFiniteType}
-  \lean{SchemeOfLocallyOfFiniteType}
+  % \lean{SchemeOfLocallyOfFiniteType}
   A scheme $\schemeOf{X}$ is locally of finite type over $\complex$ is a scheme over $\complex$ togather
   with the following data
     \begin{enumerate}
@@ -34,13 +36,15 @@ to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCo
   Let $\schemeOf{X}$ be a scheme locally of finite type over $\complex$, let $U \subseteq X$ be an open subset, then $(U, \mathcal{O}_{X}\mid_{U})$ is a scheme locally of finite type over $\complex$.
 \end{proposition}
 \begin{proof}
-TBD
+  Since $\schemeOf{X}$ is locally of finite type over $\complex$, it admits an affine open cover $U_{i}\cong\spec{R_{i}}$.
+  Then $U = \bigcup_{i} U \cap U_{i}$; since for each $i$, $U \cap U_{i}$ is open in $U_{i} \cong \spec{R_{i}}$, it is a union of $\spec{\left(R_{i}\right)_{f_{j}}}$. This gives us an open covering by finitely generated $\complex$-algebra.
+
 \end{proof}
 
 
 \begin{proposition}
-  If $\schemeOf{X}$ is a scheme locally of finite type over $\complex$, then the set of closed points of $X$ is in bijection with $X(\complex) := \Hom\left(\spec{\complex}, \schemeOf{X}\right)$.
+  If $\schemeOf{X}$ is a scheme locally of finite type over $\complex$, then the set of closed points of $X$ is in bijection with $X(\complex) := \hom\left(\spec{\complex}, \schemeOf{X}\right)$.
 \end{proposition}
-\begin{proof}
-  TBD
-\end{proof}
+
+
+\section{Analytification}
