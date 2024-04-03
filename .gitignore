@@ -12,3 +12,5 @@ lean_decls
 *.out
 /blueprint/src/chapters/.auctex-auto/
 /blueprint/src/macros/.auctex-auto/
+/blueprint/src/.auctex-auto/
+/blueprint/src/chapters/_region_.tex
