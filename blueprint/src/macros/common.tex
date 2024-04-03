@@ -10,6 +10,8 @@
 \xyoption{2cell}
 \UseAllTwocells
 
+\usepackage{faktor}
+
 \newcommand{\complex}{\ensuremath{\mathbb{C}}}
 \newcommand{\schemeOf}[1]{\ensuremath{\left(#1, \mathcal{O}_{#1}\right)}}
 \newcommand{\anOfSchemeOf}[1]{\ensuremath{(#1^{\mathsf{an}}, \mathcal{O}_{#1}^{\mathsf{an}})}}
@@ -19,6 +21,7 @@
 \newcommand{\opens}[1]{\ensuremath{\mathsf{Opens}{\left(#1\right)}}}
 
 % Categories
+\newcommand{\sch}{\ensuremath{\mathsf{Sch}}}
 \newcommand{\asch}{\ensuremath{\mathsf{ASch}}}
 \newcommand{\cring}{\ensuremath{\mathsf{CRing}}}
 \newcommand{\algebra}[1]{\ensuremath{\mathsf{Alg}_{#1}}}
@@ -29,6 +32,7 @@
 \newcommand{\range}[1]{\ensuremath{\operatorname*{range}\left({#1}\right)}}
 
 
-\DeclareMathOperator{\Hom}{Hom}
+\newcommand{\Hom}{\ensuremath{\operatorname{Hom}}}
+\newcommand{\specop}{\ensuremath{\operatorname{Spec}}}
 
-\newcommand{\quotient}[2]{\ensuremath{^{#1}\big/_{#2}}}
+\newcommand{\quotient}[2]{\ensuremath{\faktor{#1}{#2}}}

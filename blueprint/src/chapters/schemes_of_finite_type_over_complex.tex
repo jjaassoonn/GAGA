@@ -1,3 +1,9 @@
+%%% Local Variables: ***
+%%% mode:latex ***
+%%% TeX-master: "../content.tex"  ***
+%%% End: ***
+
+
 \chapter{Schemes of finite type over $\complex$}
 
 
@@ -42,7 +48,18 @@ to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCo
 
 \end{proof}
 
+\begin{proposition}
+  Let $\spec A$ be an affine finite scheme over $\complex$. We have that the set of closed points are in bijection to
+  $\Hom_{\algebra{\complex}}\left(A, \complex\right)$
+\end{proposition}
+
+\begin{proof}
+  From~\cref{cor:maximal-ideal-algebra-hom}, we know that for each closed point $\mathfrak m$, i.e. a maximal ideal, there is a unique $\phi_{\mathfrak m} : A \to \complex$ whose kernel is $\mathfrak m$. Conversely, for any $\phi: A \to \complex$, $\ker \phi$ is certainly a prime ideal\footnote{$\ker \phi$ is equal to $(\specop \phi)(\star)$ where $\star$ is the unique point of $\specop\complex$}. Since $\phi$ is surjective\footnote{for each $c \in \complex$, $\phi(c \cdot 1) = c$}, its kernel is maximal.
+
+  It remains to show that $\mathfrak m \mapsto \phi_{\mathfrak{m}}$ and $\phi \mapsto \ker \phi$ are inverse to each other. But this follows from the uniqueness from~\cref{cor:maximal-ideal-algebra-hom}.
+\end{proof}
+
 
 \begin{proposition}
-  If $\schemeOf{X}$ is a scheme locally of finite type over $\complex$, then the set of closed points of $X$ is in bijection with $X(\complex) := \hom\left(\spec{\complex}, \schemeOf{X}\right)$.
+  If $\schemeOf{X}$ is a scheme locally of finite type over $\complex$, then the set of closed points of $X$ is in bijection with $X(\complex) := \Hom_{\sch/\complex}\left(\spec{\complex}, \schemeOf{X}\right)$.
 \end{proposition}

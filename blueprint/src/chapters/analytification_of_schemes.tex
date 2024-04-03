@@ -8,19 +8,6 @@ For an arbitrary scheme $\schemeOf{X}$, in this section, we denote $\operatornam
 
 \subsection{Affine scheme}
 
-\subsubsection{Commutative algebra lemmas}
+\begin{theorem}
 
-This lemma should work for any algebraically closed field.
-\begin{lemma}
-  \label{lemma:maximal-ideals-of-fg-algebra}
-  Let $R$ be a finitely generated $\complex$-algebra, then every maximal ideals $\mathfrak{m}$ is the kernel of a unique $\complex$-algebra homomorphism $\phi_{\mathfrak{m}}: R \to \complex$.
-\end{lemma}
-
-\begin{proof}
-  Existence: since $R$ is finitely generated, $R$ is isomorphic to $\quotient{\complex[X_{0}, \dots, X_{m}]}{I}$ for some ideal $I$ and some natural number $m$. Thus $\mathfrak{m}$ corresponds to a maximal ideal $\mathfrak{m}'$ of $\complex[X_{0}, \dots, X_{m}]$ containing $I$. By Hilbert's Nullstellensatz, $\mathfrak{m}'$ corresponds to a point $(c_{0},\dots, c_{m})$ in $\complex^{m+1}$, then $\mathfrak{m}$ is the kernel of the map $[X_{i}] \mapsto c_{i}$.
-
-  Uniqueness: assume $\phi$ and $\psi$ are two $\complex$-algebra homomorphism such that $\mathfrak{m}=\ker \phi = \ker \psi$.
-  Let $\rho : \complex \to R$ be the structure map of $R$.
-  For any $r \in R$, we claim that there exists some $x \in \mathfrak m$ and $\lambda \in \complex$, such that $r = x + \rho(\lambda)$. Indeed, we have that $r = (r - \rho(\phi(r))) + \rho(\phi(r))$, and $r - \rho(\phi(r))$ is in the kernel of $\phi$. Thus for every $r = m + \rho(\lambda)$, we have $\phi(r) = \phi(\rho(\lambda)) = \psi(\rho(\lambda)) = \psi(r)$.
-
-\end{proof}
+\end{theorem}

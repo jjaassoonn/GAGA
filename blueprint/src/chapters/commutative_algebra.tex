@@ -1,0 +1,36 @@
+\chapter{Commutative Algebra}
+
+In this chapter, we collect some results of commutative algebra.
+
+\begin{theorem}[Hilbert's Nullstellensatz]
+  \label{thm:hilbert-nullstellensatz-finite-field-extension}
+  Let $k$ be a field and $A$ be a finitely generated $k$-algebra. Then for every prime ideal $\mathfrak{p}$ of $A$,
+  \[
+    \mathfrak p = \bigcap_{\mathfrak{p} \ge \mathfrak{m}~ \text{is maximal}} \mathfrak{m}.
+  \]
+  If $\mathfrak m$ is a maximal ideal of $A$, then $k \hookrightarrow \quotient{A}{\mathfrak m}$ is a finite field extension.
+\end{theorem}
+\begin{proof}
+% TODO
+\end{proof}
+
+\begin{corollary}
+Let $k$ be an algebraically closed filed and $A$ a finitely generated $k$-algebra, then $\quotient{A}{\mathfrak m}$ is isomorphic to $k$.
+\end{corollary}
+\begin{proof}
+The field extension $\quotient{A}{\mathfrak m}$ over $k$ is finite hence algebraic. Since $k$ is algebraically closed, $\quotient{A}{\mathfrak m}$ is isomorphic to $k$.
+\end{proof}
+
+\begin{corollary}\label{cor:maximal-ideal-algebra-hom}
+Let $k$ be an algebraically closed field and $A$ a finitely generated $k$-algebras, then each maximal ideals $\mathfrak m \subseteqq A$ is the kernel of a unique algebra homomorphism $\phi_{\mathfrak m} : A \to k$
+\end{corollary}
+
+\begin{proof}
+
+
+  Existence: the kernel of $A \stackrel{\pi}{\to} \quotient{A}{\mathfrak m} \stackrel{\sim}{\to} k$ is exactly $\mathfrak m$.
+
+  Uniqueness: assume $\phi$ and $\psi$ are two $\complex$-algebra homomorphism such that $\mathfrak{m}=\ker \phi = \ker \psi$.
+  Let $\rho : \complex \to R$ be the structure map of $R$.
+  For any $r \in R$, we claim that there exists some $x \in \mathfrak m$ and $\lambda \in \complex$, such that $r = x + \rho(\lambda)$. Indeed, we have that $r = (r - \rho(\phi(r))) + \rho(\phi(r))$, and $r - \rho(\phi(r))$ is in the kernel of $\phi$. Thus for every $r = m + \rho(\lambda)$, we have $\phi(r) = \phi(\rho(\lambda)) = \psi(\rho(\lambda)) = \psi(r)$.
+\end{proof}
