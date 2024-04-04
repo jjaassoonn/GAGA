@@ -12,7 +12,7 @@
 
 \documentclass[a4paper]{report}
 
-\usepackage{geometry}
+\usepackage[textwidth=14cm]{geometry}
 
 \usepackage{expl3}
 
@@ -23,6 +23,18 @@
 \usepackage[unicode,colorlinks=true,linkcolor=blue,urlcolor=magenta, citecolor=blue]{hyperref}
 
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
+
+\usepackage{fontspec}
+\setmathfont{Latin Modern Math}
+\setmathfont[range=\varnothing]{Asana-Math.otf}
+\setmathfont[range=\pitchfork]{Asana-Math.otf}
+\setmathfont[range=\intprod]{Asana-Math.otf}
+\setmathfont[range=\int]{Latin Modern Math}
+
+\usepackage[nameinlink, capitalize]{cleveref}
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
 
 \input{macros/common}
 \input{macros/print}
