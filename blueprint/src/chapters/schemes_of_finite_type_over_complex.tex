@@ -12,22 +12,20 @@
 We introduce the notion of schemes of finite type over $\complex$ first, we require the definition to be constructive similar
 to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCover}.
 
-\begin{definition}[Schemes locally of finite type over $\complex$]
-  \label{def:SchemeLocallyOfFiniteType}
-  % \lean{SchemeOfLocallyOfFiniteType}
-  A scheme $\schemeOf{X}$ is locally of finite type over $\complex$ is a scheme over $\complex$ togather
+\begin{definition}[Schemes locally of finite type over $\complex$]\label{def:SchemeLocallyOfFiniteType}
+  % \lean{SchemeLocallyOfFiniteType}
+  A scheme $\schemeOf{X}$ is locally of finite type over $\complex$ is a scheme over $\complex$ together
   with the following data
     \begin{enumerate}
         \item indexing set: $I$;
-        \item a family of finitely generated algebras: $R : I \to \fgalgebra{\complex}$;
+        \item a family of finitely generated algebras: $R : I \to \fgcalgebra{\complex}$;
         \item a family of open immersions: for each $i \in I$, $\iota_i: \spec{R_i} \to \schemeOf{X}$;
         \item covering: $c : X \to I$ such that for each $x \in X$, $c_x \in \range{\iota_i}$.
     \end{enumerate}
 \end{definition}
 
 
-\begin{definition}[Scheme of finite type over $\complex$]
-  \label{def:SchemeOfFiniteType}
+\begin{definition}[Scheme of finite type over $\complex$]\label{def:SchemeOfFiniteType}
   % \lean{SchemeOfFiniteType}
   % \uses{SchemeLocallyOfFiniteType}
   A scheme $\schemeOf{X}$ is of finite type over $\complex$ if it is a scheme locally of finite type over $\complex$
@@ -35,7 +33,8 @@ to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCo
 \end{definition}
 
 \begin{remark}
-  If we are only considering schems (locally of) finite type over $\complex$, any morphism of ringed space over $\complex$ is automatically a morphism of {\em locally} ringed space over $\complex$.
+  If we are only considering schems (locally of) finite type over $\complex$, any morphism of ringed space over $\complex$ is automatically a morphism of {\em locally\/} ringed space over $\complex$.
+
 \end{remark}
 
 
@@ -44,22 +43,58 @@ to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCo
 \end{proposition}
 \begin{proof}
   Since $\schemeOf{X}$ is locally of finite type over $\complex$, it admits an affine open cover $U_{i}\cong\spec{R_{i}}$.
-  Then $U = \bigcup_{i} U \cap U_{i}$; since for each $i$, $U \cap U_{i}$ is open in $U_{i} \cong \spec{R_{i}}$, it is a union of $\spec{\left(R_{i}\right)_{f_{j}}}$. This gives us an open covering by finitely generated $\complex$-algebra.
+  Then $U = \bigcup_{i} U \cap U_{i}$; since for each $i$, $U \cap U_{i}$ is open in $U_{i} \cong \spec{R_{i}}$, it is a union of $\spec{{\left(R_{i}\right)}_{f_{j}}}$. This gives us an open covering by finitely generated $\complex$-algebra.
 
 \end{proof}
 
 \begin{proposition}
-  Let $\spec A$ be an affine finite scheme over $\complex$. We have that the set of closed points are in bijection to
-  $\Hom_{\algebra{\complex}}\left(A, \complex\right)$
+  Let $\spec A$ and $\spec B$ be two affine finite schemes over $\complex$. Then any morphism $\Phi : \spec A \to \spec B$ is of the form $(\phi, \phi^{\star})$ where $\phi : B \to A$ is a $\complex$-algebra homomorphism.
 \end{proposition}
 
 \begin{proof}
-  From~\cref{cor:maximal-ideal-algebra-hom}, we know that for each closed point $\mathfrak m$, i.e. a maximal ideal, there is a unique $\phi_{\mathfrak m} : A \to \complex$ whose kernel is $\mathfrak m$. Conversely, for any $\phi: A \to \complex$, $\ker \phi$ is certainly a prime ideal\footnote{$\ker \phi$ is equal to $(\specop \phi)(\star)$ where $\star$ is the unique point of $\specop\complex$}. Since $\phi$ is surjective\footnote{for each $c \in \complex$, $\phi(c \cdot 1) = c$}, its kernel is maximal.
-
-  It remains to show that $\mathfrak m \mapsto \phi_{\mathfrak{m}}$ and $\phi \mapsto \ker \phi$ are inverse to each other. But this follows from the uniqueness from~\cref{cor:maximal-ideal-algebra-hom}.
+  TBD
 \end{proof}
 
+Maybe we should construct the following and recover the previous lemma as a corollary:
+\begin{proposition}
+  The category of affine scheme over $\complex$ is antequivalent to commutative $\complex$-algebras.
+  The category of affine finite scheme over $\complex$ is antiequivalent to finitely generated commutative $\complex$-algebras.
+  \[
+    \asch_{\complex}^{\mathsf{op}}\cong \calgebra{\complex}
+  \]
+  \[
+    \afsch{\complex}^{\mathsf{op}}\cong \fgcalgebra{\complex}
+  \]
+\end{proposition}
+
+\begin{proposition}
+  Let $\spec A$ be an affine finite scheme over $\complex$. We have that the set of closed points are in bijection to
+  $\Hom_{\calgebra{\complex}}\left(A, \complex\right)$
+\end{proposition}
+
+\begin{proof}
+  From~\cref{cor:maximal-ideal-algebra-hom}, we know that for each closed point $\mathfrak m$, i.e.\ a maximal ideal, there is a unique $\phi_{\mathfrak m} : A \to \complex$ whose kernel is $\mathfrak m$. Conversely, for any $\phi: A \to \complex$, $\ker \phi$ is certainly a prime ideal\footnote{$\ker \phi$ is equal to $(\specop \phi)(\star)$ where $\star$ is the unique point of $\specop\complex$}. Since $\phi$ is surjective\footnote{for each $c \in \complex$, $\phi(c \cdot 1) = c$}, its kernel is maximal.
+
+
+  It remains to show that $\mathfrak m \mapsto \phi_{\mathfrak{m}}$ and $\phi \mapsto \ker \phi$ are inverse to each other. But this follows from the uniqueness from~\cref{cor:maximal-ideal-algebra-hom}:
+  Let $\mathfrak{m}$ be a maximal ideal, then the $\ker \phi_{\mathfrak{m}}$ is exactly $\mathfrak m$ by definition of $\phi_{\mathfrak m}$;
+  on the otherhand, if $\phi$ is an algebra homomorphism then $\phi$ and $\phi_{\ker \phi}$ are both algebra homomorphims that has kernel $\ker \phi$, hence must be equal.
+\end{proof}
+
+\begin{corollary}\label{cor:affine-closed-point-bijection-scheme-morphism}
+  Let $\spec A$ be an affine finite scheme over $\complex$. We have that the set of closed points are in bijection to $\Hom_{\sch/\complex}{\left(\spec{\complex}, \spec A\right)}$
+\end{corollary}
 
 \begin{proposition}
   If $\schemeOf{X}$ is a scheme locally of finite type over $\complex$, then the set of closed points of $X$ is in bijection with $X(\complex) := \Hom_{\sch/\complex}\left(\spec{\complex}, \schemeOf{X}\right)$.
 \end{proposition}
+
+
+\begin{proof}
+  Let $x \in X$ be a closed point and an affine open neighbourhood of $x \in U \cong \spec A$ where $A$ is a finite $\complex$-algebra. Thus the $x$ corresponds to $\Phi \in \Hom{\left(\spec \complex, \spec A\right)}$ by \cref{cor:affine-closed-point-bijection-scheme-morphism}; we define $\Psi_{x}$ to be the compositon of
+  \[
+    \begin{tikzcd}
+      \spec\complex \ar[r, "\Phi"] & \spec A \ar[r, "\sim"]  & {\left(U, {\mathcal{O}_{X}\!\mid_{U}}\right)} \ar[r, hookrightarrow] & \schemeOf{X}
+    \end{tikzcd}
+  \]
+\end{proof}

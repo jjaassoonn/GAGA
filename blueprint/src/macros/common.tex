@@ -6,12 +6,6 @@
 \usepackage{tikz}
 \usepackage{tikz-cd}
 
-\usepackage[all]{xy}
-\xyoption{2cell}
-\UseAllTwocells
-
-\usepackage{faktor}
-
 \newcommand{\complex}{\ensuremath{\mathbb{C}}}
 \newcommand{\schemeOf}[1]{\ensuremath{\left(#1, \mathcal{O}_{#1}\right)}}
 \newcommand{\anOfSchemeOf}[1]{\ensuremath{(#1^{\mathsf{an}}, \mathcal{O}_{#1}^{\mathsf{an}})}}
@@ -23,9 +17,12 @@
 % Categories
 \newcommand{\sch}{\ensuremath{\mathsf{Sch}}}
 \newcommand{\asch}{\ensuremath{\mathsf{ASch}}}
+\newcommand{\lfsch}[1]{\ensuremath{\mathsf{LocallyFiniteSch}_{#1}}}
+\newcommand{\fsch}[1]{\ensuremath{\mathsf{FintieSch}_{#1}}}
+\newcommand{\afsch}[1]{\ensuremath{\mathsf{AFiniteSch}_{#1}}}
 \newcommand{\cring}{\ensuremath{\mathsf{CRing}}}
-\newcommand{\algebra}[1]{\ensuremath{\mathsf{Alg}_{#1}}}
-\newcommand{\fgalgebra}[1]{\ensuremath{\mathsf{FGAlg}_{#1}}}
+\newcommand{\calgebra}[1]{\ensuremath{\mathsf{CAlg}_{#1}}}
+\newcommand{\fgcalgebra}[1]{\ensuremath{\mathsf{FGCAlg}_{#1}}}
 
 \newcommand{\spec}[1]{\ensuremath{\left(\operatorname*{Spec}{#1}, \widetilde{#1}\right)}}
 
