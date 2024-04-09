@@ -6,7 +6,6 @@
 
 \chapter{Schemes of finite type over $\complex$}
 
-
 \section{Basic Definitions}
 
 We introduce the notion of schemes of finite type over $\complex$ first, we require the definition to be constructive similar
@@ -37,14 +36,21 @@ to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCo
 
 \end{remark}
 
-
 \begin{proposition}
   Let $\schemeOf{X}$ be a scheme locally of finite type over $\complex$, let $U \subseteq X$ be an open subset, then $(U, \mathcal{O}_{X}\mid_{U})$ is a scheme locally of finite type over $\complex$.
+  \label{thm:restriction-of-scheme-of-finite-type-is-scheme-of-finite-type}
 \end{proposition}
 \begin{proof}
   Since $\schemeOf{X}$ is locally of finite type over $\complex$, it admits an affine open cover $U_{i}\cong\spec{R_{i}}$.
   Then $U = \bigcup_{i} U \cap U_{i}$; since for each $i$, $U \cap U_{i}$ is open in $U_{i} \cong \spec{R_{i}}$, it is a union of $\spec{{\left(R_{i}\right)}_{f_{j}}}$. This gives us an open covering by finitely generated $\complex$-algebra.
+\end{proof}
 
+\begin{proposition}
+  If $\schemeOf{X}$ is a scheme locally of finite type over $\complex$, and $\spec A$ is an open affine subscheme of $\schemeOf{X}$, then $A$ is a finitely generated $\complex$-algebra as well.
+\end{proposition}
+
+\begin{proof}
+  TBD %TODO: add proof here
 \end{proof}
 
 \begin{proposition}
@@ -52,7 +58,7 @@ to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCo
 \end{proposition}
 
 \begin{proof}
-  TBD
+  TBD %TODO: add proof here
 \end{proof}
 
 Maybe we should construct the following and recover the previous lemma as a corollary:
@@ -91,10 +97,35 @@ Maybe we should construct the following and recover the previous lemma as a coro
 
 
 \begin{proof}
-  Let $x \in X$ be a closed point and an affine open neighbourhood of $x \in U \cong \spec A$ where $A$ is a finite $\complex$-algebra. Thus the $x$ corresponds to a morphism $\Phi$ between $\spec \complex$ and $\spec A$ by \cref{cor:affine-closed-point-bijection-scheme-morphism}; we define $\Psi_{x}$ to be the composition of
+  Let $x \in X$ be a closed point and an affine open neighbourhood of $x \in U \cong \spec A$ where $A$ is a finite $\complex$-algebra. Thus the $x$ corresponds to a morphism $\Phi_{A}$ between $\spec \complex$ and $\spec A$ by \cref{cor:affine-closed-point-bijection-scheme-morphism}; we define $\Psi_{x}$ to be the composition of
   \begin{center}
     \begin{tikzcd}
-      \spec\complex \ar[r, "\Phi"] & \spec A \ar[r, "\sim"]  & {\left(U, {\mathcal{O}_{X}\!\mid_{U}}\right)} \ar[r, hookrightarrow] & \schemeOf{X}
+      \spec\complex \ar[r, "\Phi_{A}"] & \spec A \ar[r, "\sim"]  & {\left(U, {\mathcal{O}_{X}\!\mid_{U}}\right)} \ar[r, hookrightarrow] & \schemeOf{X}.
     \end{tikzcd}
   \end{center}
+  Moreover, $\Psi_{x}$ does not dependent on the choice of affine neighbourhood $\specop A$: support $x \in \specop A \cap \specop B$, then $\specop A \cap \specop B$ admits an open covering of spectra of finitely generated $\complex$-algebras by \Cref{thm:restriction-of-scheme-of-finite-type-is-scheme-of-finite-type}. Thus we can find a finitely generated $\complex$-algebra $C$ such that $\specop C \subseteq \specop A \cap \specop B$.
+  \begin{center}
+    \begin{tikzcd}
+      & & \spec A \arrow[hookrightarrow]{rd} & \\
+      \spec{\complex} \arrow{r}{\Phi_{C}} & \spec{C} \arrow[hookrightarrow]{ru} \arrow[hookrightarrow]{rd} & & \schemeOf{X}, \\
+      & & \spec B \arrow[hookrightarrow]{ur} &
+    \end{tikzcd}
+  \end{center}
+  where $ (\_: \specop C \hookrightarrow \specop A) \circ \Phi_{C}$ is exactly $\Phi_{A}$ and $(\_{: \specop C \hookrightarrow \specop B}) \circ \Phi_{C}$ is exactly $\Phi_{B}$ by \Cref{cor:affine-closed-point-bijection-scheme-morphism}; thus both composition in the commutative square above is $\Psi_{x}$, in another word, $\Psi_{x}$ is independent from the choice of affine neighbourhood.
+
+  On the otherhand, if we are given a morphism $\Psi : \spec\complex \to \spec A$, let us denote $x$ to be the image of the unique point in $\specop \complex$ under $\Psi$; we want to show that $x$ is a closed point. Since affine open set forms a basis, we only need to check that, for any affine open $\spec A \hookrightarrow \schemeOf{X}$, $x$ is closed in $\specop A$. We consider the factorisation of $\Psi$:
+  \begin{center}
+    \begin{tikzcd}[column sep=large]
+      \spec\complex \arrow{r}{\specop{\psi}} & {\spec A} \arrow[hookrightarrow]{r} & \schemeOf{X},
+    \end{tikzcd}
+  \end{center}
+  where $\psi$ is a $\complex$-algebra homomorphism $A \to \complex$ such that $\specop{\psi} = \Psi|_{\specop A}$, hence by \Cref{cor:affine-closed-point-bijection-scheme-morphism}, we have $x$ is closed in $\spec A$.
+
+  % FIXME: better explanation is required here.
+  The two construction above is bijection is verified as the following:
+  \begin{enumerate}
+    \item Let $x$ be a closed point, then it corresponds to $\Psi_{x}$, but the image of the unique point in $\specop \complex$ under $\Psi_{x}$ is $x$;
+    \item if $\Phi$ is a morphism $\spec\complex \to X$ and denote the unique image as $x$,
+          $\Phi$ factors through affine open neighbourhood of $x$ hence it is $\Psi_{x}$ because $\Psi_{x}$ does not dependent on the choice of affine neightbourhood.
+  \end{enumerate}
 \end{proof}
