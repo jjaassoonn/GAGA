@@ -1,13 +1,48 @@
+%%% Local Variables: ***
+%%% mode:latex ***
+%%% TeX-master: "../content"
+%%% End: ***
+
 \chapter{Analytification of a scheme}
 
 In this chapter, unless explicitly specified, all schemes we work with are assumed to be locally of finite type over $\complex$.
 
 \section{Toplogical story}
 
-For an arbitrary scheme $\schemeOf{X}$, in this section, we denote $\operatorname{Max}{X}$ to be the set of all closed points of $X$ and $\operatorname{MaxSpec} R$ to be the set of all maximal ideals of a ring $R$. Not that $\operatorname{MaxSpec} R$ is exactly $\operatorname{Max}\left(\spec{R}\right)$
+
+For an arbitrary scheme $\schemeOf{X}$, in this section, we denote $\an{X}$ to be the set of all closed points of $X$ and $\operatorname{MaxSpec} R$ to be the set of all maximal ideals of a ring $R$. Not that $\operatorname{MaxSpec} R$ is exactly $\an{\left(\specop{R}\right)}$ and we use both interchangeably.
 
 \subsection{Affine scheme}
 
+% \subsubsection{The special case of polynomial ring}
+
+% In this section we work explicitly with $R := \complex[X_{1},\dots, X_{n}]$.
+
+Let $S$ be a finitely generated $\complex$-algebra so that $S \cong \complex[a_{1},\dots, a_{n}]$ for some $a_{i} \in S$. Thus there is a surjection $\theta: \complex[X_{1}, \dots, X_{n}] \to S$ defined by $X_{i} \mapsto a_{i}$. Thus, we have a morphism $\Theta$ of schemes of finite type over $\complex$ between $\spec S$ to $\spec{\complex[X_{1},\dots, X_{n}]}$. By \Cref{thm:morph-maps-closed-points-to-closed-points}, we know that $\Theta$ gives us a continuous map
+\[
+%   We denote $\an{\left(\specop R\right)}$ to the space consisted of the closed points in $\specop R$ with the topology induced from $\complex^{n}$.
+\operatorname{MaxSpec}\theta: \operatorname{MaxSpec} S \to \operatorname{MaxSpec} \complex[X_{1},\dots, X_{n}],
+\]
+
+since $\theta$ is surjective, $\operatorname{MaxSpec}\theta$ is injective\footnote{being the restriction of the injective function $\specop \theta$}.
+
 \begin{theorem}
+  The set of closed points in $\spec{\complex[X_{1},\dots, X_{n}]}$ corresponds bijectively to $\complex^{n}$.
 
 \end{theorem}
+\begin{proof}
+  By \Cref{thm:affine-scheme-closed-points-biject-algebra-hom}, the set of closed points
+  bijects to $\complex$-algebra homomorphisms $\complex[X_{1}, \dots, X_{n}] \to \complex$. Thus we only need a bijection between $\complex$-algebra homomorphism $\complex[X_{1}, \dots, X_{n}] \to \complex$ and $\complex^{n}$:
+  \begin{enumerate}
+    \item Give a point $p := (a_{1},\dots, a_{n}) \in \complex^{n}$, we define $\phi_{a}: \complex[X_{1},\dots, X_{n}] \to \complex$ to be evaluation at the point $p$.
+
+    \item Give a $\complex$-algebra homomorphism $\phi$, we take the point to be $(\phi(X_{1}, \dots, X_{n}))$.
+  \end{enumerate}
+\end{proof}
+
+\begin{definition}[Complex topology]
+  The complex topology of $\specop S$ is the subspace topology of $\complex^{n}$ via the injective map $\maxspecop \theta$.
+\end{definition}
+
+% \begin{definition}
+% \end{definition}

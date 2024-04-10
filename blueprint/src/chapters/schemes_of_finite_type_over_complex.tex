@@ -1,9 +1,3 @@
-%%% Local Variables: ***
-%%% mode:latex ***
-%%% TeX-master: "../content.tex"  ***
-%%% End: ***
-
-
 \chapter{Schemes of finite type over $\complex$}
 
 \section{Basic Definitions}
@@ -73,7 +67,7 @@ Maybe we should construct the following and recover the previous lemma as a coro
   \]
 \end{proposition}
 
-\begin{proposition}
+\begin{proposition}\label{thm:affine-scheme-closed-points-biject-algebra-hom}
   Let $\spec A$ be an affine finite scheme over $\complex$. We have that the set of closed points are in bijection to
   $\Hom_{\calgebra{\complex}}\left(A, \complex\right)$
 \end{proposition}
@@ -120,7 +114,6 @@ Maybe we should construct the following and recover the previous lemma as a coro
     \end{tikzcd}
   \end{center}
   where $\psi$ is a $\complex$-algebra homomorphism $A \to \complex$ such that $\specop{\psi} = \Psi|_{\specop A}$, hence by \Cref{cor:affine-closed-point-bijection-scheme-morphism}, we have $x$ is closed in $\spec A$.
-
   % FIXME: better explanation is required here.
   The two construction above is bijection is verified as the following:
   \begin{enumerate}
@@ -129,3 +122,18 @@ Maybe we should construct the following and recover the previous lemma as a coro
           $\Phi$ factors through affine open neighbourhood of $x$ hence it is $\Psi_{x}$ because $\Psi_{x}$ does not dependent on the choice of affine neightbourhood.
   \end{enumerate}
 \end{proof}
+
+\begin{proposition}
+  Let $\Phi = (\phi, \phi^{*}) : \schemeOf{X} \to \schemeOf{Y}$ be a morphism of schemes locally of finite type over $\complex$, then $\phi$ maps closed points of $X$ to closed points of $Y$.
+  \label{thm:morph-maps-closed-points-to-closed-points}
+\end{proposition}
+
+% TODO: insert proof here
+\begin{proof}
+  TBD
+\end{proof}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../content"
+%%% End:
