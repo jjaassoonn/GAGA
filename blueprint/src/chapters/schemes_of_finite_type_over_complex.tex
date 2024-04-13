@@ -57,14 +57,14 @@ Let $\Phi : \schemeOf{X} \to \schemeOf{Y} := (\phi, \phi^*)$ be a morphism of sc
 We introduce the notion of schemes of finite type over $\complex$ first, we require the definition to be constructive similar
 to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCover}.
 \begin{definition}[Schemes of finite type over $\complex$]\label{def:SchemeLocallyOfFiniteType}
-    A scheme $\schemeOf{X}$ is locally of finite type (reps. of finite type) over $\complex$ if $\schemeOf{X}$ is a scheme over $\complex$ and the structure morphism $\schemeOf{X} \to \spec{\complex}$ is a morphism locally of finite type (resp. of finite type). 
+  \lean{SchemeLocallyOfFiniteTypeOverComplex}
+  A scheme $\schemeOf{X}$ is locally of finite type (reps. of finite type) over $\complex$ if $\schemeOf{X}$ is a scheme over $\complex$ and the structure morphism $\schemeOf{X} \to \spec{\complex}$ is a morphism locally of finite type (resp. of finite type). 
 \end{definition}
 
 Let us unpack the \Cref{def:SchemeLocallyOfFiniteType} a little:
 
 
 \begin{definition}[Affine open covering of spectra of finitely generated $\complex$-algebras]
-  % \lean{SchemeLocallyOfFiniteType}
   An affine open covering of spectra of finitely generated $\complex$-algebra for a scheme $\schemeOf{X}$ over $\complex$ is the following data:
     \begin{enumerate}
         \item indexing set: $I$;
