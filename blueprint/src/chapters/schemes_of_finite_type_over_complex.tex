@@ -4,11 +4,50 @@
 
 Before we can define our main object of interest, {\em schemes of finite type over $\complex$}, we need to introduce some preliminary notions.
 
-\begin{definition}[Morphisms of scheme \href{https://stacks.math.columbia.edu/tag/01T0}{\cite{stacks-project}}]
-Let $\schemeOf{X}$ and $\schemeOf{Y}$ be two schemes and $\Phi : \schemeOf{X} \to \schemeOf{Y} := (\phi, \phi^*)$ be a morphism of schemes. We say 
+We already have the following in {\sf mathlib4} thanks to Andrew Yang:
+\begin{definition}[Local property of ring homomorphisms]\label{def:ring-hom-prop-local}
+	Let $P$ be a property of ring homomorphisms:
+%	\begin{itemize}
+%		\item 
+		we say the property $P$ is local if
+		\begin{enumerate}
+			\item if $P$ holds for $\phi : A \to B$, then $P$ holds for $\phi_S: S^{-1}A \to \left\langle f(S)\right\rangle^{-1} B$ for any submonoid $S \subseteq A$.
+			\item Let $\phi : A \to B$ be a ring homomorphism, if $P$ holds for $A \stackrel{\phi}{\to} B \to B_{f_i}$ for some $\{f_i\} \subseteq B$ such that $\langle f_i\rangle = B$, then $P$ holds for $\phi$.
+			\item Let $\phi : A \to B$ and $\psi : B \to C$ be two ring homomorphisms, if $P$ holds for $\phi$ and $\psi$, then $P$ holds for $\psi \circ \phi$.
+			\item $P$ holds for $A \to A_f$ for all $f \in A$.
+		\end{enumerate}
+%	\end{itemize}
+\end{definition}
+
+\begin{proposition}
+	The property ``finite type'' of ring homomorphisms is local in the sense of \Cref{def:ring-hom-prop-local}.
+\end{proposition}
+\begin{proof}
+	Done in {\sf mathlib4} by Andrew Yang.
+\end{proof}
+
+\begin{definition}
+	If $P$ is a property of ring homomorphisms then the property {\em affine locally $P$} of scheme morphism $(\phi, \phi^*): \schemeOf{X} \to \schemeOf{Y}$ holds if and only if $P$ holds for all ring homomorphism $\Gamma(U, \mathcal{O}_X \to \Gamma(V, \mathcal{O}_Y)$ for all affine subsets $U \subseteq X$ and $V \subseteq Y$ such that $\phi(U) \le V$.
+\end{definition}
+
+\begin{proposition}\label{thm:affine-locally-open-immersion}
+Let $P$ be a local property of ring homorphisms and $\Phi : \schemeOf{X} \to \schemeOf{Y}$ be an open immersion between schemes, then affine locally $P$ holds for $\Phi$.
+\end{proposition}
+\begin{proof}
+Done in {\sf mathlib4} by Andrew Yang.	
+\end{proof}
+
+\begin{proposition}\label{thm:affine-locally-source-cover}
+	Let $P$ be a local property of ring homorphisms and $\Phi : \schemeOf{X} \to \schemeOf{Y}$ be a morphism between schemes, then affine locally $P$ holds for $\Phi$ if and only if affine locally $P$ holds for $\Phi_{U_i}$ where $\{U_i\}$ is an arbitrary affine open cover of $X$.
+\end{proposition}
+\begin{proof}
+	Done in {\sf mathlib4} by Andrew Yang
+\end{proof}
+
+\begin{definition}[Morphisms locally of finite type {\cite[\href{https://stacks.math.columbia.edu/tag/01T0}{01T0}]{stacks-project}}]
+Let $\Phi : \schemeOf{X} \to \schemeOf{Y} := (\phi, \phi^*)$ be a morphism of schemes. We say 
 \begin{enumerate}
-    \item $\Phi$ is of finite type at $x \in X$ if there exists some affine neighourhood $x \ni U$ and an affine open subset $V \subseteq Y$ such that $\phi(U) \subseteq V$ and the induced ring map $a: \Gamma(V, \mathcal{O}_Y) \to \Gamma(U, \mathcal{O}_X)$ is of finite type, i.e. $\Gamma(V, \mathcal{O}_Y)$ is a finitely generated algebra of $\Gamma(U, \mathcal{O}_X)$ where the algebra structure is given by $a$.
-    \item $\Phi$ is locally of finite type if any $\Phi$ is of finite type at every $x \in X$.
+    \item $\Phi$ is locally of finite type if for any affine open $V \subseteq Y$ and affine open $U \subseteq X$ such that $\phi(U) \subseteq V$, we have the induced map $\Gamma(U, \mathcal{O}_X) \to \Gamma(V, \mathcal{O}_V)$ is a ring map of finite type. In another word, $\Phi$ is affine locally a ring homomorphism of finite type.
     \item $\Phi$ is of finite type if it is locally of finite type and $\phi$ is quasi-compact.
 \end{enumerate}
 \end{definition}
@@ -21,10 +60,12 @@ to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCo
     A scheme $\schemeOf{X}$ is locally of finite type (reps. of finite type) over $\complex$ if $\schemeOf{X}$ is a scheme over $\complex$ and the structure morphism $\schemeOf{X} \to \spec{\complex}$ is a morphism locally of finite type (resp. of finite type). 
 \end{definition}
 
-\begin{definition}[Schemes locally of finite type over $\complex$]
+Let us unpack the \Cref{def:SchemeLocallyOfFiniteType} a little:
+
+
+\begin{definition}[Affine open covering of spectra of finitely generated $\complex$-algebras]
   % \lean{SchemeLocallyOfFiniteType}
-  A scheme $\schemeOf{X}$ is locally of finite type over $\complex$ is a scheme over $\complex$ together
-  with the following data
+  An affine open covering of spectra of finitely generated $\complex$-algebra for a scheme $\schemeOf{X}$ over $\complex$ is the following data:
     \begin{enumerate}
         \item indexing set: $I$;
         \item a family of finitely generated algebras: $R : I \to \fgcalgebra{\complex}$;
@@ -33,17 +74,20 @@ to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCo
     \end{enumerate}
 \end{definition}
 
-\begin{definition}[Scheme of finite type over $\complex$]\label{def:SchemeOfFiniteType}
-  % \lean{SchemeOfFiniteType}
-  % \uses{SchemeLocallyOfFiniteType}
-  A scheme $\schemeOf{X}$ is of finite type over $\complex$ if it is a scheme locally of finite type over $\complex$
-  and has finite indexing set; or equivalently $X$ is quasi-compact.
-\end{definition}
+\begin{lemma}
+    A scheme $\schemeOf X$ is locally of finite type over $\complex$ if it is a scheme over $\complex$ and it admits an affine open cover of spectra of finitely generated $\complex$-algebras.
+\end{lemma}
 
-\begin{remark}
-  If we are only considering schems (locally of) finite type over $\complex$, any morphism of ringed space over $\complex$ is automatically a morphism of {\em locally\/} ringed space over $\complex$.
+\begin{proof}
+    This is unpacking \Cref{def:SchemeLocallyOfFiniteType}
+\end{proof}
 
-\end{remark}
+% \begin{definition}[Scheme of finite type over $\complex$]\label{def:SchemeOfFiniteType}
+%   % \lean{SchemeOfFiniteType}
+%   % \uses{SchemeLocallyOfFiniteType}
+%   A scheme $\schemeOf{X}$ is of finite type over $\complex$ if it is a scheme locally of finite type over $\complex$
+%   and has finite indexing set; or equivalently $X$ is quasi-compact.
+% \end{definition}
 
 \begin{proposition}
   Let $\schemeOf{X}$ be a scheme locally of finite type over $\complex$, let $U \subseteq X$ be an open subset, then $(U, \mathcal{O}_{X}\mid_{U})$ is a scheme locally of finite type over $\complex$.
@@ -52,6 +96,8 @@ to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCo
 \begin{proof}
   Since $\schemeOf{X}$ is locally of finite type over $\complex$, it admits an affine open cover $U_{i}\cong\spec{R_{i}}$.
   Then $U = \bigcup_{i} U \cap U_{i}$; since for each $i$, $U \cap U_{i}$ is open in $U_{i} \cong \spec{R_{i}}$, it is a union of $\spec{{\left(R_{i}\right)}_{f_{j}}}$. This gives us an open covering by finitely generated $\complex$-algebra.
+  
+  Alternatively: use \Cref{thm:affine-locally-open-immersion}.
 \end{proof}
 
 \begin{proposition}
@@ -59,7 +105,7 @@ to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCo
 \end{proposition}
 
 \begin{proof}
-  TBD %TODO: add proof here
+Use \Cref{thm:affine-locally-source-cover}.
 \end{proof}
 
 \begin{proposition}
@@ -104,7 +150,6 @@ Maybe we should construct the following and recover the previous lemma as a coro
   If $\schemeOf{X}$ is a scheme locally of finite type over $\complex$, then the set of closed points of $X$ is in bijection with $X(\complex) := \Hom_{\sch/\complex}\left(\spec{\complex}, \schemeOf{X}\right)$.
 \end{proposition}
 
-
 \begin{proof}
   Let $x \in X$ be a closed point and an affine open neighbourhood of $x \in U \cong \spec A$ where $A$ is a finite $\complex$-algebra. Thus the $x$ corresponds to a morphism $\Phi_{A}$ between $\spec \complex$ and $\spec A$ by \cref{cor:affine-closed-point-bijection-scheme-morphism}; we define $\Psi_{x}$ to be the composition of
   \begin{center}
@@ -147,6 +192,11 @@ Maybe we should construct the following and recover the previous lemma as a coro
 \begin{proof}
   TBD
 \end{proof}
+
+
+\begin{remark}
+  If we are only considering schems (locally of) finite type over $\complex$, any morphism of ringed space over $\complex$ is automatically a morphism of {\em locally\/} ringed space over $\complex$.
+\end{remark}
 
 %%% Local Variables:
 %%% mode: latex
