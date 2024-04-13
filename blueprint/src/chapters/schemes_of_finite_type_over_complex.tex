@@ -6,56 +6,53 @@ Before we can define our main object of interest, {\em schemes of finite type ov
 
 We already have the following in {\sf mathlib4} thanks to Andrew Yang:
 \begin{definition}[Local property of ring homomorphisms]\label{def:ring-hom-prop-local}
-	Let $P$ be a property of ring homomorphisms:
-%	\begin{itemize}
-%		\item 
-		we say the property $P$ is local if
-		\begin{enumerate}
-			\item if $P$ holds for $\phi : A \to B$, then $P$ holds for $\phi_S: S^{-1}A \to \left\langle f(S)\right\rangle^{-1} B$ for any submonoid $S \subseteq A$.
-			\item Let $\phi : A \to B$ be a ring homomorphism, if $P$ holds for $A \stackrel{\phi}{\to} B \to B_{f_i}$ for some $\{f_i\} \subseteq B$ such that $\langle f_i\rangle = B$, then $P$ holds for $\phi$.
-			\item Let $\phi : A \to B$ and $\psi : B \to C$ be two ring homomorphisms, if $P$ holds for $\phi$ and $\psi$, then $P$ holds for $\psi \circ \phi$.
-			\item $P$ holds for $A \to A_f$ for all $f \in A$.
-		\end{enumerate}
-%	\end{itemize}
+  \lean{RingHom.PropertyIsLocal}
+  Let $P$ be a property of ring homomorphisms:
+%   \begin{itemize}
+%     \item
+    we say the property $P$ is local if
+    \begin{enumerate}
+      \item if $P$ holds for $\phi : A \to B$, then $P$ holds for $\phi_S: S^{-1}A \to \left\langle f(S)\right\rangle^{-1} B$ for any submonoid $S \subseteq A$.
+      \item Let $\phi : A \to B$ be a ring homomorphism, if $P$ holds for $A \stackrel{\phi}{\to} B \to B_{f_i}$ for some $\{f_i\} \subseteq B$ such that $\langle f_i\rangle = B$, then $P$ holds for $\phi$.
+      \item Let $\phi : A \to B$ and $\psi : B \to C$ be two ring homomorphisms, if $P$ holds for $\phi$ and $\psi$, then $P$ holds for $\psi \circ \phi$.
+      \item $P$ holds for $A \to A_f$ for all $f \in A$.
+    \end{enumerate}
+%   \end{itemize}
 \end{definition}
 
 \begin{proposition}
-	The property ``finite type'' of ring homomorphisms is local in the sense of \Cref{def:ring-hom-prop-local}.
+  The property ``finite type'' of ring homomorphisms is local in the sense of \Cref{def:ring-hom-prop-local}.
+  \lean{finiteType_ofLocalizationSpan}
 \end{proposition}
-\begin{proof}
-	Done in {\sf mathlib4} by Andrew Yang.
-\end{proof}
 
 \begin{definition}
-	If $P$ is a property of ring homomorphisms then the property {\em affine locally $P$} of scheme morphism $(\phi, \phi^*): \schemeOf{X} \to \schemeOf{Y}$ holds if and only if $P$ holds for all ring homomorphism $\Gamma(U, \mathcal{O}_X \to \Gamma(V, \mathcal{O}_Y)$ for all affine subsets $U \subseteq X$ and $V \subseteq Y$ such that $\phi(U) \le V$.
+  \lean{AlgebraicGeometry.targetAffineLocally}
+  If $P$ is a property of ring homomorphisms then the property {\em affine locally $P$} of scheme morphism $(\phi, \phi^*): \schemeOf{X} \to \schemeOf{Y}$ holds if and only if $P$ holds for all ring homomorphism $\Gamma(U, \mathcal{O}_X \to \Gamma(V, \mathcal{O}_Y)$ for all affine subsets $U \subseteq X$ and $V \subseteq Y$ such that $\phi(U) \le V$.
+
 \end{definition}
 
-\begin{proposition}\label{thm:affine-locally-open-immersion}
-Let $P$ be a local property of ring homorphisms and $\Phi : \schemeOf{X} \to \schemeOf{Y}$ be an open immersion between schemes, then affine locally $P$ holds for $\Phi$.
-\end{proposition}
-\begin{proof}
-Done in {\sf mathlib4} by Andrew Yang.	
-\end{proof}
-
-\begin{proposition}\label{thm:affine-locally-source-cover}
-	Let $P$ be a local property of ring homorphisms and $\Phi : \schemeOf{X} \to \schemeOf{Y}$ be a morphism between schemes, then affine locally $P$ holds for $\Phi$ if and only if affine locally $P$ holds for $\Phi_{U_i}$ where $\{U_i\}$ is an arbitrary affine open cover of $X$.
-\end{proposition}
-\begin{proof}
-	Done in {\sf mathlib4} by Andrew Yang
-\end{proof}
-
 \begin{definition}[Morphisms locally of finite type {\cite[\href{https://stacks.math.columbia.edu/tag/01T0}{01T0}]{stacks-project}}]
-Let $\Phi : \schemeOf{X} \to \schemeOf{Y} := (\phi, \phi^*)$ be a morphism of schemes. We say 
+  \lean{AlgebraicGeometry.LocallyOfFiniteType}
+Let $\Phi : \schemeOf{X} \to \schemeOf{Y} := (\phi, \phi^*)$ be a morphism of schemes. We say
 \begin{enumerate}
     \item $\Phi$ is locally of finite type if for any affine open $V \subseteq Y$ and affine open $U \subseteq X$ such that $\phi(U) \subseteq V$, we have the induced map $\Gamma(U, \mathcal{O}_X) \to \Gamma(V, \mathcal{O}_V)$ is a ring map of finite type. In another word, $\Phi$ is affine locally a ring homomorphism of finite type.
     \item $\Phi$ is of finite type if it is locally of finite type and $\phi$ is quasi-compact.
 \end{enumerate}
 \end{definition}
 
+\begin{proposition}\label{thm:affine-locally-open-immersion}
+  Let $\Phi : \schemeOf{X} \to \schemeOf{Y}$ be an open immersion between schemes, then $\Phi$ is locally of finite type.
+  \lean{AlgebraicGeometry.locallyOfFiniteTypeOfIsOpenImmersion}
+\end{proposition}
+
+\begin{proposition}\label{thm:affine-locally-source-cover}
+  \lean{AlgebraicGeometry.LocallyOfFiniteType.source_openCover_iff}
+  Let $P$ be a local property of ring homorphisms and $\Phi : \schemeOf{X} \to \schemeOf{Y}$ be a morphism between schemes, then affine locally $P$ holds for $\Phi$ if and only if affine locally $P$ holds for $\Phi_{U_i}$ where $\{U_i\}$ is an arbitrary affine open cover of $X$.
+\end{proposition}
+
+
 \section{Basic Definitions}
 
-We introduce the notion of schemes of finite type over $\complex$ first, we require the definition to be constructive similar
-to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCover}.
 \begin{definition}[Schemes of finite type over $\complex$]\label{def:SchemeLocallyOfFiniteType}
   \lean{SchemeLocallyOfFiniteTypeOverComplex}
   A scheme $\schemeOf{X}$ is locally of finite type (reps. of finite type) over $\complex$ if $\schemeOf{X}$ is a scheme over $\complex$ and the structure morphism $\schemeOf{X} \to \spec{\complex}$ is a morphism locally of finite type (resp. of finite type). 

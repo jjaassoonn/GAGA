@@ -23,4 +23,4 @@ morphism is locally of finite type.
 -/
 structure SchemeLocallyOfFiniteTypeOverComplex extends Scheme :=
 toSpecℂ : toScheme ⟶ Specℂ
-locally_finite : LocallyOfFiniteType toSpecℂ
+[locally_finite : LocallyOfFiniteType toSpecℂ]
