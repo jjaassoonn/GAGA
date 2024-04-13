@@ -13,7 +13,7 @@ import Mathlib.Data.Complex.Basic
 
 -/
 
-open AlgebraicGeometry Opposite CategoryTheory
+open AlgebraicGeometry Opposite CategoryTheory TopologicalSpace
 
 local notation "Specℂ" => Scheme.Spec.obj (op <| CommRingCat.of ℂ)
 
@@ -25,6 +25,7 @@ structure SchemeLocallyOfFiniteTypeOverComplex extends Scheme :=
 toSpecℂ : toScheme ⟶ Specℂ
 [locally_finite : LocallyOfFiniteType toSpecℂ]
 
+attribute [instance] SchemeLocallyOfFiniteTypeOverComplex.locally_finite
 
 namespace SchemeLocallyOfFiniteTypeOverComplex
 
@@ -45,5 +46,13 @@ instance instCategory : Category (SchemeLocallyOfFiniteTypeOverComplex) where
   comp f g :=
   { hom := f.hom ≫ g.hom
     commutes := by rw [Category.assoc, g.commutes, f.commutes]}
+
+/--
+Restriction of a scheme locally of finite type over ℂ to an open set is also locally of finite type.
+-/
+noncomputable def restrict (X : SchemeLocallyOfFiniteTypeOverComplex) (U : Opens X.carrier) :
+  SchemeLocallyOfFiniteTypeOverComplex where
+toScheme := X.toScheme ∣_ᵤ U
+toSpecℂ := X.toScheme.ofRestrict _ ≫ X.toSpecℂ
 
 end SchemeLocallyOfFiniteTypeOverComplex

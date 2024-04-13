@@ -57,6 +57,10 @@ Let $\Phi : \schemeOf{X} \to \schemeOf{Y} := (\phi, \phi^*)$ be a morphism of sc
   $\Gamma(W_{i, j}, \mathcal{O}_{X}) \to \Gamma(U_{i}, \mathcal{O}_{Y})$ is of finite type.
 \end{proposition}
 
+\begin{proposition}\label{thm:locally_of_finite_type_comp}
+  \lean{AlgebraicGeometry.locallyOfFiniteTypeOfComp}
+  Composition of morphisms locally of finite type is locally of finite type.
+\end{proposition}
 
 \section{Basic Definitions}
 
@@ -94,11 +98,16 @@ Let us unpack the \Cref{def:SchemeLocallyOfFiniteType} a little:
 % \end{definition}
 
 \begin{proposition}
+  \lean{SchemeLocallyOfFiniteTypeOverComplex.restrict}
   Let $\schemeOf{X}$ be a scheme locally of finite type over $\complex$, let $U \subseteq X$ be an open subset, then $(U, \mathcal{O}_{X}\mid_{U})$ is a scheme locally of finite type over $\complex$.
   \label{thm:restriction-of-scheme-of-finite-type-is-scheme-of-finite-type}
 \end{proposition}
 \begin{proof}
-  By \Cref{thm:affine-locally-source-cover}, since the collection of all open subset of $X$ certainly is an open cover, the result follows.
+  By \Cref{thm:affine-locally-open-immersion} and \Cref{thm:locally_of_finite_type_comp}, open immersions are locally of finite type and composition of morphisms locally of finite type is again locally of finite type, so
+  \[
+    \left(U, \mathcal{O}_{X}|_{U}\right) \hookrightarrow \schemeOf{X} \to \spec\complex
+  \]
+  is a morphism locally of finite type as well.
 \end{proof}
 
 \begin{proposition}
