@@ -47,7 +47,14 @@ Let $\Phi : \schemeOf{X} \to \schemeOf{Y} := (\phi, \phi^*)$ be a morphism of sc
 
 \begin{proposition}\label{thm:affine-locally-source-cover}
   \lean{AlgebraicGeometry.LocallyOfFiniteType.source_openCover_iff}
-  Let $P$ be a local property of ring homorphisms and $\Phi : \schemeOf{X} \to \schemeOf{Y}$ be a morphism between schemes, then affine locally $P$ holds for $\Phi$ if and only if affine locally $P$ holds for $\Phi_{U_i}$ where $\{U_i\}$ is an arbitrary affine open cover of $X$.
+  Let $\Phi : \schemeOf{X} \to \schemeOf{Y}$ be a morphism of schemes and $\mathcal{U} = \{U_{i}\}$ be an open covering of $X$, then affine locally $\Phi$ is locally of finite type if and only if $\Phi|_{U_i}$ is a morphism locally of finite type.
+\end{proposition}
+
+\begin{proposition}\label{thm:affine-cover-locally-of-finite-type}
+  \lean{AlgebraicGeometry.LocallyOfFiniteType.affine_openCover_iff}
+  Let $\Phi : \schemeOf{X} \to \schemeOf{Y}$ be a morphism of schemes and $\mathcal{U}=\{U_{i}\}$ be an affine open covering of $Y$. Consider the pullback cover $\mathcal{V} = \{V_{i}\}$ of $X$, and if for each $i$, there is
+  an affine open cover $\mathcal{W}_{i} = \{W_{i, j}\}$ for $V_{i} \subseteq X$. Then $\Phi$ is locally of finite type if and only if, for each $i$ and $j$, the ring map
+  $\Gamma(W_{i, j}, \mathcal{O}_{X}) \to \Gamma(U_{i}, \mathcal{O}_{Y})$ is of finite type.
 \end{proposition}
 
 
@@ -91,18 +98,15 @@ Let us unpack the \Cref{def:SchemeLocallyOfFiniteType} a little:
   \label{thm:restriction-of-scheme-of-finite-type-is-scheme-of-finite-type}
 \end{proposition}
 \begin{proof}
-  Since $\schemeOf{X}$ is locally of finite type over $\complex$, it admits an affine open cover $U_{i}\cong\spec{R_{i}}$.
-  Then $U = \bigcup_{i} U \cap U_{i}$; since for each $i$, $U \cap U_{i}$ is open in $U_{i} \cong \spec{R_{i}}$, it is a union of $\spec{{\left(R_{i}\right)}_{f_{j}}}$. This gives us an open covering by finitely generated $\complex$-algebra.
-  
-  Alternatively: use \Cref{thm:affine-locally-open-immersion}.
+  By \Cref{thm:affine-locally-source-cover}, since the collection of all open subset of $X$ certainly is an open cover, the result follows.
 \end{proof}
 
 \begin{proposition}
-  If $\schemeOf{X}$ is a scheme locally of finite type over $\complex$, and $\spec A$ is an open affine subscheme of $\schemeOf{X}$, then $A$ is a finitely generated $\complex$-algebra as well.
+  If $\schemeOf{X}$ is a scheme locally of finite type over $\complex$, and $U = \spec A$ is an open affine subscheme of $\schemeOf{X}$, then $A \cong \Gamma(U, \mathcal{O}_{X})$ is a finitely generated $\complex$-algebra as well.
 \end{proposition}
 
 \begin{proof}
-Use \Cref{thm:affine-locally-source-cover}.
+  Use \Cref{thm:affine-cover-locally-of-finite-type}. Consider the only open affine cover of $\specop \complex$, $X \times_{\specop \complex} \specop \complex \cong X$ has an affine open covering obtained by the collection of all affine open set. $\spec A$ is certain in the open cover, then the ring map $\complex \to A$ is finite as well.
 \end{proof}
 
 \begin{proposition}
