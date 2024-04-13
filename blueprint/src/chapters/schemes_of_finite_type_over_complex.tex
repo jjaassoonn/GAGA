@@ -1,19 +1,27 @@
 \chapter{Schemes of finite type over $\complex$}
 
-\section{Preliminary Definitions}
+\section{Preliminary Definitions and machinery}
 
 Before we can define our main object of interest, {\em schemes of finite type over $\complex$}, we need to introduce some preliminary notions.
 
-\begin{definition}[Morphisms of scheme]
-Let $\schemeOf{X}$ and $\schemeOf{Y}$ be two schemes and $\Phi : \schemeOf{X} \to \schemeOf{Y}$ be a morphism of schemes.
+\begin{definition}[Morphisms of scheme \cite[01T1]{stacks-project}]
+Let $\schemeOf{X}$ and $\schemeOf{Y}$ be two schemes and $\Phi : \schemeOf{X} \to \schemeOf{Y} := (\phi, \phi^*)$ be a morphism of schemes. We say 
+\begin{enumerate}
+    \item $\Phi$ is of finite type at $x \in X$ if there exists some affine neighourhood $x \ni U$ and an affine open subset $V \subseteq Y$ such that $\phi(U) \subseteq V$ and the induced ring map $a: \Gamma(V, \mathcal{O}_Y) \to \Gamma(U, \mathcal{O}_X)$ is of finite type, i.e. $\Gamma(V, \mathcal{O}_Y)$ is a finitely generated algebra of $\Gamma(U, \mathcal{O}_X)$ where the algebra structure is given by $a$.
+    \item $\Phi$ is locally of finite type if any $\Phi$ is of finite type at every $x \in X$.
+    \item $\Phi$ is of finite type if it is locally of finite type and $\phi$ is quasi-compact.
+\end{enumerate}
 \end{definition}
 
 \section{Basic Definitions}
 
 We introduce the notion of schemes of finite type over $\complex$ first, we require the definition to be constructive similar
 to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCover}.
+\begin{definition}[Schemes of finite type over $\complex$]\label{def:SchemeLocallyOfFiniteType}
+    A scheme $\schemeOf{X}$ is locally of finite type (reps. of finite type) over $\complex$ if $\schemeOf{X}$ is a scheme over $\complex$ and the structure morphism $\schemeOf{X} \to \spec{\complex}$ is a morphism locally of finite type (resp. of finite type). 
+\end{definition}
 
-\begin{definition}[Schemes locally of finite type over $\complex$]\label{def:SchemeLocallyOfFiniteType}
+\begin{definition}[Schemes locally of finite type over $\complex$]
   % \lean{SchemeLocallyOfFiniteType}
   A scheme $\schemeOf{X}$ is locally of finite type over $\complex$ is a scheme over $\complex$ together
   with the following data
@@ -24,7 +32,6 @@ to {\tt AlgebraicGeometry.Scheme.OpenCover}\uses{AlgebraicGeometry.Scheme.OpenCo
         \item covering: $c : X \to I$ such that for each $x \in X$, $c_x \in \range{\iota_i}$.
     \end{enumerate}
 \end{definition}
-
 
 \begin{definition}[Scheme of finite type over $\complex$]\label{def:SchemeOfFiniteType}
   % \lean{SchemeOfFiniteType}
