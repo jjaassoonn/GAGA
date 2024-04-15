@@ -22,6 +22,9 @@ A scheme locally of finite type over complex numbers is a scheme over ℂ such t
 morphism is locally of finite type.
 -/
 structure SchemeLocallyOfFiniteTypeOverComplex extends Scheme :=
+/--
+the structure morphism of a scheme locally of finite type over ℂ.
+-/
 toSpecℂ : toScheme ⟶ Specℂ
 [locally_finite : LocallyOfFiniteType toSpecℂ]
 
@@ -34,6 +37,9 @@ A morphism between two schemes locally of finite type over ℂ, is a morphism of
 compatible with the structure morphisms.
 -/
 structure Hom (X Y : SchemeLocallyOfFiniteTypeOverComplex) :=
+/--
+the underlying morphism of schemes locally of finite type over ℂ is a plain morphism of schemes.
+-/
 hom : X.toScheme ⟶ Y.toScheme
 commutes : hom ≫ Y.toSpecℂ = X.toSpecℂ := by aesop_cat
 
@@ -65,17 +71,19 @@ noncomputable instance instSectionAlgebra :
   RingHom.toAlgebra <| RingHom.comp (Scheme.Γ.map (op (X.restrict U).toSpecℂ)) <|
     SpecΓIdentity.inv.app (.of ℂ)
 
-
 end algebra
 
 variable (X) in
+/--
+Implementation details, do not use, the double underscore `__` hopefully deters you from using this.
+-/
 @[simps!]
-noncomputable def pullbackSpecℂCover (i) :
+private noncomputable def pullbackSpecℂCover__ (i) :
     Scheme.OpenCover (SpecComplex.openCover.pullbackCover X.toSpecℂ |>.obj i) :=
   Scheme.Pullback.openCoverOfLeft X.toScheme.openCoverOfAllAffineOpens _ _
 
 instance inst_pullbackSpecℂCover_isAffine (i) (j) :
-    IsAffine (X.pullbackSpecℂCover i |>.obj j) :=
+    IsAffine (X.pullbackSpecℂCover__ i |>.obj j) :=
   Scheme.Pullback.isAffine_of_isAffine_isAffine_isAffine _ _
 
 section affine_open
@@ -89,7 +97,7 @@ lemma sections_finite (hU : IsAffineOpen U) :
     Algebra.FiniteType ℂ (Scheme.Γ.obj (op <| X.restrict U |>.toScheme)) := by
   letI : IsAffine (X.toScheme ∣_ᵤ U) := hU
   have h1 := LocallyOfFiniteType.affine_openCover_iff (X.restrict U).toSpecℂ SpecComplex.openCover
-    (fun i => (X.restrict U).pullbackSpecℂCover i) |>.mp (X.restrict U).locally_finite ⟨⟩
+    (fun i => (X.restrict U).pullbackSpecℂCover__ i) |>.mp (X.restrict U).locally_finite ⟨⟩
     ⟨⊤, show IsAffine <| (X.toScheme.restrict _).restrict _ from ?_⟩
   pick_goal 2
   · refine @isAffineOfIso _ (X.toScheme ∣_ᵤ U) (Scheme.ofRestrict _ _) ?_ _
@@ -135,10 +143,10 @@ lemma sections_finite (hU : IsAffineOpen U) :
   rw [← Scheme.Γ.map_comp]
   change Scheme.Γ.map (op _) = Scheme.Γ.map (op (_ ≫ (X.restrict U).toSpecℂ))
   congr 2
-  rw [pullbackSpecℂCover_map]
+  rw [pullbackSpecℂCover___map]
   erw [Category.assoc]
   dsimp only [restrict_toScheme, restrict_toSpecℂ, Scheme.OpenCover.pullbackCover_obj,
-    openCover_obj, openCover_map, Scheme.ofRestrict_val_base, pullbackSpecℂCover_obj, unop_op,
+    openCover_obj, openCover_map, Scheme.ofRestrict_val_base, pullbackSpecℂCover___obj, unop_op,
     Scheme.openCoverOfAllAffineOpens_obj, Scheme.openCoverOfAllAffineOpens_map]
 
   erw [Limits.pullback.lift_snd, Category.comp_id, Limits.pullback.condition, Category.comp_id]
@@ -147,7 +155,52 @@ instance inst_sections_finite [hU : Fact <| IsAffineOpen U] :
     Algebra.FiniteType ℂ (Scheme.Γ.obj (op <| X.restrict U |>.toScheme)) :=
   sections_finite hU.out
 
-end affine_open
+noncomputable instance (U) :
+    Algebra ℂ (Scheme.Γ.obj <| op <| X.toScheme.openCoverOfAllAffineOpens.obj U) :=
+  instSectionAlgebra U.1
 
+noncomputable instance (U) :
+    Algebra.FiniteType ℂ (Scheme.Γ.obj <| op <| X.toScheme.openCoverOfAllAffineOpens.obj U) :=
+  sections_finite U.2
+
+noncomputable instance (i) : Algebra ℂ <| Scheme.Γ.obj (op <| X.toScheme.affineCover.obj i) :=
+  RingHom.toAlgebra <|
+    let U : X.affineOpens := ⟨⟨_, IsOpenImmersion.isOpen_range (X.toScheme.affineCover.map i)⟩,
+      @isAffineOfIso (Y := X.toScheme.affineCover.obj i)
+      (f := (IsOpenImmersion.isoOfRangeEq (X.toScheme.ofRestrict _)
+        (X.toScheme.affineCover.map i) (by
+          ext (x : X.carrier)
+          simp only [Scheme.ofRestrict_val_base, Set.mem_range]
+          fconstructor
+          · rintro ⟨⟨_, ⟨x, rfl⟩⟩, rfl⟩; exact ⟨x, rfl⟩
+          · rintro ⟨x, rfl⟩; exact ⟨⟨(X.toScheme.affineCover.map i).1.base x, by simp⟩, rfl⟩)).hom)
+        _ _⟩
+    RingHom.comp (Scheme.Γ.map <| op <|
+        (IsOpenImmersion.isoOfRangeEq (X.toScheme.ofRestrict _)
+        (X.toScheme.affineCover.map i) (by
+          ext (x : X.carrier)
+          simp only [Scheme.ofRestrict_val_base, Set.mem_range]
+          fconstructor
+          · rintro ⟨⟨_, ⟨x, rfl⟩⟩, rfl⟩; exact ⟨x, rfl⟩
+          · rintro ⟨x, rfl⟩; exact ⟨⟨(X.toScheme.affineCover.map i).1.base x, by simp⟩, rfl⟩)).inv)
+      (algebraMap ℂ (Scheme.Γ.obj (op <| X.toScheme.openCoverOfAllAffineOpens.obj U)))
+
+instance (i) : Algebra.FiniteType ℂ <| Scheme.Γ.obj (op <| X.toScheme.affineCover.obj i) :=
+  let U : X.affineOpens := ⟨⟨_, IsOpenImmersion.isOpen_range (X.toScheme.affineCover.map i)⟩,
+    @isAffineOfIso (Y := X.toScheme.affineCover.obj i)
+    (f := (IsOpenImmersion.isoOfRangeEq (X.toScheme.ofRestrict _)
+      (X.toScheme.affineCover.map i) (by
+        ext (x : X.carrier)
+        simp only [Scheme.ofRestrict_val_base, Set.mem_range]
+        fconstructor
+        · rintro ⟨⟨_, ⟨x, rfl⟩⟩, rfl⟩; exact ⟨x, rfl⟩
+        · rintro ⟨x, rfl⟩; exact ⟨⟨(X.toScheme.affineCover.map i).1.base x, by simp⟩, rfl⟩)).hom)
+      _ _⟩
+  RingHom.FiniteType.comp_surjective (sections_finite U.2) <| Function.Bijective.surjective <| by
+    apply (config := { allowSynthFailures := true }) ConcreteCategory.bijective_of_isIso
+    apply (config := { allowSynthFailures := true })  CategoryTheory.Functor.map_isIso
+    apply (config := { allowSynthFailures := true })  isIso_op
+
+end affine_open
 
 end SchemeLocallyOfFiniteTypeOverComplex
