@@ -99,6 +99,8 @@ Let us unpack the \Cref{def:SchemeLocallyOfFiniteType} a little:
 
 \begin{proposition}
   \lean{SchemeLocallyOfFiniteTypeOverComplex.restrict}
+  \leanok
+  \uses{def:SchemeLocallyOfFiniteType}
   Let $\schemeOf{X}$ be a scheme locally of finite type over $\complex$, let $U \subseteq X$ be an open subset, then $(U, \mathcal{O}_{X}\mid_{U})$ is a scheme locally of finite type over $\complex$.
   \label{thm:restriction-of-scheme-of-finite-type-is-scheme-of-finite-type}
 \end{proposition}
@@ -110,12 +112,19 @@ Let us unpack the \Cref{def:SchemeLocallyOfFiniteType} a little:
   is a morphism locally of finite type as well.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{thm:affine-open-is-finite-algebra}
   If $\schemeOf{X}$ is a scheme locally of finite type over $\complex$, and $U = \spec A$ is an open affine subscheme of $\schemeOf{X}$, then $A \cong \Gamma(U, \mathcal{O}_{X})$ is a finitely generated $\complex$-algebra as well.
+  \lean{SchemeLocallyOfFiniteTypeOverComplex.inst_sections_finite}
+  \leanok
+  \uses{def:SchemeLocallyOfFiniteType,thm:affine-cover-locally-of-finite-type}
 \end{proposition}
 
 \begin{proof}
-  Use \Cref{thm:affine-cover-locally-of-finite-type}. Consider the only open affine cover of $\specop \complex$, $X \times_{\specop \complex} \specop \complex \cong X$ has an affine open covering obtained by the collection of all affine open set. $\spec A$ is certain in the open cover, then the ring map $\complex \to A$ is finite as well.
+  Consider the only open affine cover $\{\specop \complex\}$ of $\specop \complex$, its pullback cover is $\{X_{\complex} := X \times_{\specop\complex} \specop\complex\}$ where $X_{\complex}$ can be covered by $U_{i}\times_{\specop \complex}\specop \complex$ where $U_{i}$ runs over the collection of all affine open sets.
+  Then the conclusion follows from \Cref{thm:affine-cover-locally-of-finite-type}.
+
+  % $X \times_{\specop \complex} \specop \complex \cong X$ has an affine open covering obtained by the collection of all affine open set. $\spec A$ is certain in the open cover, then the ring map $\complex \to A$ is
+  % finite as well.
 \end{proof}
 
 \begin{proposition}
