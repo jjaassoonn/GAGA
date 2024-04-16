@@ -77,13 +77,55 @@ Now we have proven that the complex topology is independent of generators, we ca
 
   \begin{center}
     \begin{tikzcd}
-      \an{\left(\specop S\right)} \arrow[hookrightarrow]{r}{\lambda_{S}} \arrow[red]{d}[left]{\mathrm{restriction~of}~\specop \theta}& \specop S \arrow{d}{\specop \theta} \\
-      \an{\left(\specop R\right)} \arrow[hookrightarrow]{r}{\lambda_{R}} \arrow[red]{d}[left]{\sim} & \specop R \\
+      \an{\left(\specop{S}\right)} \arrow[hookrightarrow]{r}{\lambda_{S}} \arrow[red]{d}[left]{\mathrm{restriction~of}~\specop{\theta}}& \specop{S} \arrow{d}{\specop{\theta}} \\
+      \an{\left(\specop{R}\right)} \arrow[hookrightarrow]{r}{\lambda_{R}} \arrow[red]{d}[left]{\sim} & \specop{R} \\
       \complex^{n} &
     \end{tikzcd},
   \end{center}
   where $\theta$ is the surjective $\complex$-algebra homomorphism $R \to S$.
   The red arrows are continuous, since they define the complex topology; $\specop \theta$ is continuous as well. To prove $\lambda_{S}$ is continuous, we only need to prove the special case $\lambda R$ where $R = \complex[X_{1},\dots, X_{n}]$. Since $\specop R$ has a basis of basic open set $D(f)$, we only need to check that $D(f) \cap \an{\left(\specop R\right)}$ is open for any polynomial $f \in \complex[X_{1}, \dots, X_{n}]$, indeed the intersection is equal to $\{x \in \complex^{n}| f(x) \ne 0 \}$ thus open\footnote{$\mathfrak{p} \in D(f)$ if and only if $f \not\in \mathfrak{p}$. Hence $\mathfrak{m}$ is in the intersection if and onlyv if $\mathfrak{m}$ is equal to the kernel of evaluation map $\phi_{a}$ at some point $a$ and that $f$ is not in the kernel, in another word, $f(a) \ne 0$.}.
+\end{proof}
 
+\begin{theorem}
+  Let $S$ and $S'$ be two finitely generated $\complex$-algebras and $\phi : S \to S'$ be a $\complex$-algebra homomorphism, the natural map $\an{\specop{\phi}} : \an{\specop{S'}} \to \an{\specop{S}}$ is continuous (in the complex topology)
+  and compatible with the inclusion map, i.e.~the following diagram is commutative:
+  \begin{center}
+    \begin{tikzcd}[column sep = large]
+      {\an{\specop{S'}}} \arrow{r}{\an{\specop{\phi}}} \arrow[hookrightarrow]{d} & {\an{\specop{S}}} \arrow[hookrightarrow]{d} \\
+      {\specop{S'}} \arrow{r}{\specop{\phi}} & \specop{S}
+    \end{tikzcd}
+  \end{center}
+\end{theorem}
 
+\begin{proof}
+  The commutativity is free.
+  Let us choose generators $\{a_{1},\dots,a_{n}\}$'s for $S$ and $\{b_{1},\dots,a_{m}\}$'s for $S'$.
+  Let us write the polynomial ring $\complex[X_{1},\dots,X_{n}]$ as $R$ and $\complex[Y_{1},\dots, Y_{m}]$ as $R'$. Then we have two surjective $\complex$-algebra homomorphisms $\theta: R \to S$ and $\theta' : R' \to S'$ as usual.
+  Since $\{b_{i}\}$ generates $S'$, we can find polynomials $P_{i} \in R'$ such that $\phi(a_{i})= P_{i}(b_{1},\dots, b_{m})$. Then we can define a $\complex$-algebra homomorphism $\psi : R \to R'$ by $X_{i} \mapsto P_{i}(Y_{1},\dots, Y_{m})$ giving us the following commutative diagrams:
+  \begin{center}
+    \begin{tikzcd}[column sep = large]
+      & & & {\complex^{n}} & {\complex^{m}} \\
+      R \arrow{r}{\psi} \arrow{d}{\theta}& R' \arrow{d}{\theta'} & & {\an{\specop{R}}} \arrow[red]{u}{\sim} & {\an{\specop{R'}}} \arrow{l}[above]{\an{\specop{\psi}}} \arrow[red]{u}{\sim} \\
+      S \arrow{r}{\phi} & S' & & {\an{\specop{S}}} \arrow[red]{u}{\an{\specop{\theta}}} & {\an{\specop{S'}}} \arrow[red]{u}{\specop{\theta'}} \arrow{l}{\an{\specop{\phi}}}
+    \end{tikzcd}
+  \end{center}
+  The red arrows are continuous because they define the complex topology and $\an{\specop{\psi}}$ is continuous because it is defined by polynomial $\psi$. Thus $\an{\specop{\phi}}$ is continuous.
+\end{proof}
+
+\begin{corollary}
+  If $S \to S'$ is an isomorphism of finite $\complex$-algebras, then $\an{\specop{S}}$ and $\an{\specop{S'}}$ are homeomorphic.
+\end{corollary}
+
+\begin{lemma}
+  If $\phi: S \to S'$ is a surjective $\complex$-algebra homomorphism between two finite $\complex$-algebras, then $\an{\specop{\phi}} : \an{\specop{S'}} \to \an{\specop{S}}$ is an embedding.
+\end{lemma}
+
+\begin{proof}
+  Let $\{a_{1},\dots, a_{n}\}'s$ be generators of $S$ and $R$ be the polynomial ring $\complex[X_{1},\dots, X_{n}]$. Then we have $\theta : R \to S$ such that $\theta(X_{i})=a_{i}$. The composition $R \stackrel{\theta}{\to} S \stackrel{\phi}{\to} S'$ is a surjection as well. Thus by taking $\an{\specop(-)}$ operation, we get
+  \begin{center}
+    \begin{tikzcd}[column sep=large]
+      {\an{\specop{S'}}} \arrow{r}{\an{\specop{\phi}}} & {\an{\specop{S}}} \arrow{r}{\an{\specop{\theta}}} & {\an{\specop{R}}} \arrow{r}{\sim} & \complex^n.
+    \end{tikzcd}
+  \end{center}
+  The whole composition is embedding because of independence of generators and $\an{\specop{\theta}}$ is an embedding as well, thus $\an{\specop{\phi}}$ is an embedding as well.
 \end{proof}

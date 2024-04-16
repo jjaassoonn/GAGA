@@ -27,7 +27,7 @@ We already have the following in {\sf mathlib4} thanks to Andrew Yang:
 
 \begin{definition}
   \lean{AlgebraicGeometry.targetAffineLocally}
-  If $P$ is a property of ring homomorphisms then the property {\em affine locally $P$} of scheme morphism $(\phi, \phi^*): \schemeOf{X} \to \schemeOf{Y}$ holds if and only if $P$ holds for all ring homomorphism $\Gamma(U, \mathcal{O}_X \to \Gamma(V, \mathcal{O}_Y)$ for all affine subsets $U \subseteq X$ and $V \subseteq Y$ such that $\phi(U) \le V$.
+  If $P$ is a property of ring homomorphisms then the property {\rm affine locally}~$P$ of scheme morphism $(\phi, \phi^*): \schemeOf{X} \to \schemeOf{Y}$ holds if and only if $P$ holds for all ring homomorphism $\Gamma(U, \mathcal{O}_X) \to \Gamma(V, \mathcal{O}_Y)$ for all affine subsets $U \subseteq X$ and $V \subseteq Y$ such that $\phi(U) \le V$.
 
 \end{definition}
 
@@ -66,7 +66,7 @@ Let $\Phi : \schemeOf{X} \to \schemeOf{Y} := (\phi, \phi^*)$ be a morphism of sc
 
 \begin{definition}[Schemes of finite type over $\complex$]\label{def:SchemeLocallyOfFiniteType}
   \lean{SchemeLocallyOfFiniteTypeOverComplex}
-  A scheme $\schemeOf{X}$ is locally of finite type (reps. of finite type) over $\complex$ if $\schemeOf{X}$ is a scheme over $\complex$ and the structure morphism $\schemeOf{X} \to \spec{\complex}$ is a morphism locally of finite type (resp. of finite type). 
+  A scheme $\schemeOf{X}$ is locally of finite type (reps.\ of finite type) over $\complex$ if $\schemeOf{X}$ is a scheme over $\complex$ and the structure morphism $\schemeOf{X} \to \spec{\complex}$ is a morphism locally of finite type (resp.\ of finite type).
 \end{definition}
 
 Let us unpack the \Cref{def:SchemeLocallyOfFiniteType} a little:
@@ -99,7 +99,7 @@ Let us unpack the \Cref{def:SchemeLocallyOfFiniteType} a little:
 
 \begin{proposition}
   \lean{SchemeLocallyOfFiniteTypeOverComplex.restrict}
-  \leanok
+  \leanok{}
   \uses{def:SchemeLocallyOfFiniteType}
   Let $\schemeOf{X}$ be a scheme locally of finite type over $\complex$, let $U \subseteq X$ be an open subset, then $(U, \mathcal{O}_{X}\mid_{U})$ is a scheme locally of finite type over $\complex$.
   \label{thm:restriction-of-scheme-of-finite-type-is-scheme-of-finite-type}
