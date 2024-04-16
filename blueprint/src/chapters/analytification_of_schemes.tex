@@ -10,7 +10,7 @@ In this chapter, unless explicitly specified, all schemes we work with are assum
 \section{Toplogical story}
 
 
-For an arbitrary scheme $\schemeOf{X}$, in this section, we denote $\an{X}$ to be the set of all closed points of $X$ and $\operatorname{MaxSpec} R$ to be the set of all maximal ideals of a ring $R$. Not that $\operatorname{MaxSpec} R$ is exactly $\an{\left(\specop{R}\right)}$ and we use both interchangeably.
+For an arbitrary scheme $\schemeOf{X}$, in this section, we denote $\an{X}$ to be the set of all closed points of $X$ and $\operatorname{MaxSpec} R$ to be the set of all maximal ideals of a ring $R$. Not that $\operatorname{MaxSpec} R$ is exactly $\an{\specop{R}}$ and we use both interchangeably.
 
 \subsection{Affine scheme}
 
@@ -41,7 +41,7 @@ since $\theta$ is surjective, $\operatorname{MaxSpec}\theta$ is injective\footno
 \end{proof}
 
 \begin{definition}[Complex topology]
-  The complex topology of $\specop S$ is the subspace topology of $\complex^{n}$ via the injective map $\maxspecop \theta$. With the complex topology, we denote $\maxspecop S$ as $\an{\left(\specop S\right)}$
+  The complex topology of $\specop S$ is the subspace topology of $\complex^{n}$ via the injective map $\maxspecop \theta$. With the complex topology, we denote $\maxspecop S$ as $\an{\left(\specop S\right)}$ and, if $\phi : S \to S'$ is a $\complex$-algebra homorphism, we the induced map between $\an{\specop{S'}}$ and $\an{\specop{S}}$ as $\an{\specop \phi}$.
 \end{definition}
 
 Note that by now we do not know that $\an{\left(\specop S\right)}$ is independent from the choice of generators $\{a_{1},\dots, a_{n}\}$, we will enventually prove that this is true, but let's write $\an{\left(\specop S\right)}_{a_{i}}$ to stress the dependency.
@@ -83,7 +83,7 @@ Now we have proven that the complex topology is independent of generators, we ca
     \end{tikzcd},
   \end{center}
   where $\theta$ is the surjective $\complex$-algebra homomorphism $R \to S$.
-  The red arrows are continuous, since they define the complex topology; $\specop \theta$ is continuous as well. To prove $\lambda_{S}$ is continuous, we only need to prove the special case $\lambda R$ where $R = \complex[X_{1},\dots, X_{n}]$. Since $\specop R$ has a basis of basic open set $D(f)$, we only need to check that $D(f) \cap \an{\left(\specop R\right)}$ is open for any polynomial $f \in \complex[X_{1}, \dots, X_{n}]$, indeed the intersection is equal to $\{x \in \complex^{n}| f(x) \ne 0 \}$ thus open\footnote{$\mathfrak{p} \in D(f)$ if and only if $f \not\in \mathfrak{p}$. Hence $\mathfrak{m}$ is in the intersection if and onlyv if $\mathfrak{m}$ is equal to the kernel of evaluation map $\phi_{a}$ at some point $a$ and that $f$ is not in the kernel, in another word, $f(a) \ne 0$.}.
+  The red arrows are continuous, since they define the complex topology; $\specop \theta$ is continuous as well. To prove $\lambda_{S}$ is continuous, we only need to prove the special case $\lambda R$ where $R = \complex[X_{1},\dots, X_{n}]$. Since $\specop R$ has a basis of basic open set $D(f)$, we only need to check that $D(f) \cap \an{\left(\specop R\right)}$ is open for any polynomial $f \in \complex[X_{1}, \dots, X_{n}]$, indeed the intersection is equal to $\{x \in \complex^{n}| f(x) \ne 0 \}$ thus open\footnote{$\mathfrak{p} \in D(f)$ if and only if $f \not\in \mathfrak{p}$. Hence $\mathfrak{m}$ is in the intersection if and onlyv if $\mathfrak{m}$ is equal to the kernel of evaluation map $\phi_{a}$ at some point $a$ and that $f$ is not in the kernel, in another word, $f(a) \ne 0$.}\footnote{should this be a separate lemma?}. %FIXME
 \end{proof}
 
 \begin{theorem}
@@ -129,3 +129,28 @@ Now we have proven that the complex topology is independent of generators, we ca
   \end{center}
   The whole composition is embedding because of independence of generators and $\an{\specop{\theta}}$ is an embedding as well, thus $\an{\specop{\phi}}$ is an embedding as well.
 \end{proof}
+
+\begin{lemma}
+  Let us write $\complex[X_{1},\dots,X_{n}]$ as $R$ and let $f \in R$ be a polynomial, then the localization map $\alpha : R \to R_{f}$ induces an embedding $\an{\specop{R_{f}}} \hookrightarrow \an{\specop{R}}$.
+\end{lemma}
+%TODO: prove this
+\begin{proof}
+TBD
+\end{proof}
+
+More generally, we have a corresponding lemma for arbitrary finite $\complex$-algebras.
+
+\begin{lemma}
+  If $S$ is a finite $\complex$-algebra and $f \in S$, then the localization map $\alpha : S \to S_{f}$ induces an embedding $\an{\specop{S_{f}}} \hookrightarrow \an{\specop{S}}$. In fact $\an{\specop{S_{f}}}$ is identified as the subset $D(f) \cap \specop{S}$ where $D(f)$ is the basic open set in $\specop{S}$.
+\end{lemma}
+
+% TODO
+\begin{proof}
+TBD
+\end{proof}
+
+\subsection{Arbitrary scheme}
+
+\begin{definition}[Complex Topology]
+ Let $\schemeOf{X}$ be a scheme locally of finite type over $\complex$, let $\mathcal{I}$ be the collection of open immersions $\spec R \to X$ where $R$ is some finite $\complex$-algebra. Then the complex topology on the set of closed points $\max X$ is defined as the weak topology with respect to $\left\{\an{\specop{\phi}} | (\phi, \phi^{*}) \in \mathcal{I}\right\}$.
+\end{definition}

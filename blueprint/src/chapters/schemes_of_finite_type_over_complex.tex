@@ -132,7 +132,7 @@ Let us unpack the \Cref{def:SchemeLocallyOfFiniteType} a little:
 \end{proposition}
 
 \begin{proof}
-  TBD %TODO: add proof here
+  We have a ring homorphism $\phi$, just need to check it commutes with algebra map.
 \end{proof}
 
 Maybe we should construct the following and recover the previous lemma as a corollary:
@@ -162,11 +162,12 @@ Maybe we should construct the following and recover the previous lemma as a coro
 \end{proof}
 
 \begin{corollary}\label{cor:affine-closed-point-bijection-scheme-morphism}
-  Let $\spec A$ be an affine finite scheme over $\complex$. We have that the set of closed points are in bijection to $\Hom_{\sch/\complex}{\left(\spec{\complex}, \spec A\right)}$
+  Let $\spec A$ be an affine finite scheme over $\complex$. We have that the set of closed points are in bijection to $\Hom_{\sch/\complex}{\left(\spec{\complex}, \spec A\right)}$.
 \end{corollary}
 
 \begin{proposition}
-  If $\schemeOf{X}$ is a scheme locally of finite type over $\complex$, then the set of closed points of $X$ is in bijection with $X(\complex) := \Hom_{\sch/\complex}\left(\spec{\complex}, \schemeOf{X}\right)$.
+  If $\schemeOf{X}$ is a scheme locally of finite type over $\complex$, then the set of closed points of $X$ is in bijection with $X(\complex) := \Hom_{\sch/\complex}\left(\spec{\complex}, \schemeOf{X}\right)$,
+  such that every closed point $p$, is the image of $\star$ of a unique morphism $\Phi_{p}$; and for each morphism $\Phi : \spec\complex\to\schemeOf{X}$, $\Phi(\star)$ is closed in $X$ where $\star$ is the unique point of $\specop\complex$.
 \end{proposition}
 
 \begin{proof}
@@ -176,7 +177,7 @@ Maybe we should construct the following and recover the previous lemma as a coro
       \spec\complex \ar[r, "\Phi_{A}"] & \spec A \ar[r, "\sim"]  & {\left(U, {\mathcal{O}_{X}\!\mid_{U}}\right)} \ar[r, hookrightarrow] & \schemeOf{X}.
     \end{tikzcd}
   \end{center}
-  Moreover, $\Psi_{x}$ does not dependent on the choice of affine neighbourhood $\specop A$: support $x \in \specop A \cap \specop B$, then $\specop A \cap \specop B$ admits an open covering of spectra of finitely generated $\complex$-algebras by \Cref{thm:restriction-of-scheme-of-finite-type-is-scheme-of-finite-type}. Thus we can find a finitely generated $\complex$-algebra $C$ such that $\specop C \subseteq \specop A \cap \specop B$.
+  Moreover, $\Psi_{x}$ does not dependent on the choice of affine neighbourhood $\specop A$: suppose $x \in \specop A \cap \specop B$, then $\specop A \cap \specop B$ admits an open covering of spectra of finitely generated $\complex$-algebras by \Cref{thm:restriction-of-scheme-of-finite-type-is-scheme-of-finite-type}. Thus we can find a finitely generated $\complex$-algebra $C$ such that $\specop C \subseteq \specop A \cap \specop B$.
   \begin{center}
     \begin{tikzcd}
       & & \spec A \arrow[hookrightarrow]{rd} & \\
@@ -209,7 +210,7 @@ Maybe we should construct the following and recover the previous lemma as a coro
 
 % TODO: insert proof here
 \begin{proof}
-  TBD
+  Let $x$ be a closed point in $X$, then $x$ corresponds to a unique $\Psi_{x} = (\psi_{x}, \psi_{x}^{*}) : \spec{\complex} \to X$ such that $\psi_{x}(\star) = x$ where $\star$ is the unique point of $\specop\complex$. The composite $\Phi \circ \Psi_{x}$ is a morphism $\spec\complex\to Y$ thus $\Phi \circ \Psi_{x}(\star)$ is closed in $Y$, since $\Phi \circ \Psi_{x}(\star) = \Phi(\Psi_{x}(\star)) = \Phi(x)$, we conclude that $\Phi(x)$ is a closed point in $Y$.
 \end{proof}
 
 
