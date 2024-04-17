@@ -147,8 +147,13 @@ Maybe we should construct the following and recover the previous lemma as a coro
   \]
 \end{proposition}
 
+\section{Closed points}
+In this section, we focus on the subset set of closed points of a scheme locally of finite type over $\complex$, preparing for the complex topology. Let us fix some notation first: for an arbitrary scheme $\schemeOf{X}$, we denote $\maxop{X}$ to be the set of all closed points of $X$ and $\maxspecop R$ to be the set of all maximal ideals of a ring $R$. Note that $\maxspecop R$ is exactly $\maxop{\specop{R}}$ and we use both interchangeably.
+
+
+
 \begin{proposition}\label{thm:affine-scheme-closed-points-biject-algebra-hom}
-  Let $\spec A$ be an affine finite scheme over $\complex$. We have that the set of closed points are in bijection to
+  Let $\spec A$ be an affine finite scheme over $\complex$. We have that the set of closed points $\maxspecop A$ are in bijection to
   $\Hom_{\calgebra{\complex}}\left(A, \complex\right)$
 \end{proposition}
 
@@ -158,15 +163,15 @@ Maybe we should construct the following and recover the previous lemma as a coro
 
   It remains to show that $\mathfrak m \mapsto \phi_{\mathfrak{m}}$ and $\phi \mapsto \ker \phi$ are inverse to each other. But this follows from the uniqueness from~\cref{cor:maximal-ideal-algebra-hom}:
   Let $\mathfrak{m}$ be a maximal ideal, then the $\ker \phi_{\mathfrak{m}}$ is exactly $\mathfrak m$ by definition of $\phi_{\mathfrak m}$;
-  on the otherhand, if $\phi$ is an algebra homomorphism then $\phi$ and $\phi_{\ker \phi}$ are both algebra homomorphims that has kernel $\ker \phi$, hence must be equal.
+  on the other hand, if $\phi$ is an algebra homomorphism then $\phi$ and $\phi_{\ker \phi}$ are both algebra homomorphism that has kernel $\ker \phi$, hence must be equal.
 \end{proof}
 
 \begin{corollary}\label{cor:affine-closed-point-bijection-scheme-morphism}
-  Let $\spec A$ be an affine finite scheme over $\complex$. We have that the set of closed points are in bijection to $\Hom_{\sch/\complex}{\left(\spec{\complex}, \spec A\right)}$.
+  Let $\spec A$ be an affine finite scheme over $\complex$. We have that the $\maxspecop A$ is in bijection with $\Hom_{\sch/\complex}\left(\spec\complex, \spec A\right)$
 \end{corollary}
 
 \begin{proposition}
-  If $\schemeOf{X}$ is a scheme locally of finite type over $\complex$, then the set of closed points of $X$ is in bijection with $X(\complex) := \Hom_{\sch/\complex}\left(\spec{\complex}, \schemeOf{X}\right)$,
+  If $\schemeOf{X}$ is a scheme locally of finite type over $\complex$, then $\maxop X$ is in bijection with $X(\complex) := \Hom_{\sch/\complex}\left(\spec{\complex}, \schemeOf{X}\right)$,
   such that every closed point $p$, is the image of $\star$ of a unique morphism $\Phi_{p}$; and for each morphism $\Phi : \spec\complex\to\schemeOf{X}$, $\Phi(\star)$ is closed in $X$ where $\star$ is the unique point of $\specop\complex$.
 \end{proposition}
 
@@ -204,18 +209,30 @@ Maybe we should construct the following and recover the previous lemma as a coro
 \end{proof}
 
 \begin{proposition}
-  Let $\Phi = (\phi, \phi^{*}) : \schemeOf{X} \to \schemeOf{Y}$ be a morphism of schemes locally of finite type over $\complex$, then $\phi$ maps closed points of $X$ to closed points of $Y$.
+  Let $\Phi = (\phi, \phi^{*}) : \schemeOf{X} \to \schemeOf{Y}$ be a morphism of schemes locally of finite type over $\complex$, then $\phi$ maps closed points of $X$ to closed points of $Y$. Thus, we have a well defined map $\maxop\phi : \maxop{X} \to \maxop{Y}$
   \label{thm:morph-maps-closed-points-to-closed-points}
 \end{proposition}
 
-% TODO: insert proof here
 \begin{proof}
   Let $x$ be a closed point in $X$, then $x$ corresponds to a unique $\Psi_{x} = (\psi_{x}, \psi_{x}^{*}) : \spec{\complex} \to X$ such that $\psi_{x}(\star) = x$ where $\star$ is the unique point of $\specop\complex$. The composite $\Phi \circ \Psi_{x}$ is a morphism $\spec\complex\to Y$ thus $\Phi \circ \Psi_{x}(\star)$ is closed in $Y$, since $\Phi \circ \Psi_{x}(\star) = \Phi(\Psi_{x}(\star)) = \Phi(x)$, we conclude that $\Phi(x)$ is a closed point in $Y$.
 \end{proof}
 
+When we talk about topology on $\maxop{X}$, we mean the subspace topology induced by the Zariski topology\footnote{Hopefully, I will be able to main the notation clearly: $\maxop X$ is Zariski and $\an{X}$ is analytic}.
+
+\begin{corollary}
+  Let $\Phi: \schemeOf{X} \to \schemeOf{Y}$ be an open immersion, then $\maxop\phi$ is an embedding.
+\end{corollary}
+
+\begin{proof}
+  Write $\Phi= (\phi, \phi^{*})$, note that $\phi$ is necessarily an embedding $X \hookrightarrow Y$ thus $\maxop\phi$ being the restriction of $\phi$ must be embedding as well.
+\end{proof}
 
 \begin{remark}
-  If we are only considering schems (locally of) finite type over $\complex$, any morphism of ringed space over $\complex$ is automatically a morphism of {\em locally\/} ringed space over $\complex$.
+  Let $X$ be a scheme locally of finite type over $\complex$ and $\mathcal{U} = \{U_{i}\}$ be an open cover of $X$. Then $\maxop{X} = \bigcup_{i}\maxop{U_{i}}$, so that $\maxop{\mathcal{U}} = \{\maxop{U_{i}}\}$ is a Zariski open cover for $\maxop{X}$
+\end{remark}
+
+\begin{remark}
+  If we are only considering schemes (locally of) finite type over $\complex$, any morphism of ringed space over $\complex$ is automatically a morphism of {\em locally\/} ringed space over $\complex$.
 \end{remark}
 
 %%% Local Variables:
