@@ -5,6 +5,7 @@ Authors: Jujian Zhang
 -/
 
 import Mathlib.AlgebraicGeometry.Morphisms.FiniteType
+import Mathlib.AlgebraicGeometry.Morphisms.QuasiCompact
 import GAGA.SpecComplex
 import GAGA.OpenCover
 
@@ -29,6 +30,9 @@ toSpecℂ : toScheme ⟶ Specℂ
 [locally_finite : LocallyOfFiniteType toSpecℂ]
 
 attribute [instance] SchemeLocallyOfFiniteTypeOverComplex.locally_finite
+
+structure SchemeOfFiniteTypeOverComplex extends SchemeLocallyOfFiniteTypeOverComplex :=
+quasi_compact : QuasiCompact toSpecℂ
 
 namespace SchemeLocallyOfFiniteTypeOverComplex
 
@@ -198,9 +202,28 @@ instance (i) : Algebra.FiniteType ℂ <| Scheme.Γ.obj (op <| X.toScheme.affineC
       _ _⟩
   RingHom.FiniteType.comp_surjective (sections_finite U.2) <| Function.Bijective.surjective <| by
     apply (config := { allowSynthFailures := true }) ConcreteCategory.bijective_of_isIso
-    apply (config := { allowSynthFailures := true })  CategoryTheory.Functor.map_isIso
-    apply (config := { allowSynthFailures := true })  isIso_op
+    apply (config := { allowSynthFailures := true }) CategoryTheory.Functor.map_isIso
+    apply (config := { allowSynthFailures := true }) isIso_op
 
 end affine_open
 
 end SchemeLocallyOfFiniteTypeOverComplex
+
+namespace SchemeOfFiniteTypeOverComplex
+
+instance instCategory : Category SchemeOfFiniteTypeOverComplex where
+  Hom X Y := X.1.Hom Y.1
+  id X :=
+  { hom := 𝟙 X.toScheme }
+  comp f g :=
+  { hom := f.hom ≫ g.hom
+    commutes := by rw [Category.assoc, g.commutes, f.commutes]}
+
+noncomputable def restrict (X : SchemeOfFiniteTypeOverComplex) (U : Opens X.carrier) :
+  SchemeOfFiniteTypeOverComplex where
+toSchemeLocallyOfFiniteTypeOverComplex := X.1.restrict U
+quasi_compact := quasiCompact_over_affine_iff _ |>.mpr <|
+  { isCompact_univ := isCompact_of_finite_subcover fun {ι} V V_open V_cover ↦ by
+      sorry }
+
+end SchemeOfFiniteTypeOverComplex

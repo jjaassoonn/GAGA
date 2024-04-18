@@ -196,3 +196,30 @@ TBD
 \begin{proof}
   TBD
 \end{proof}
+
+Here are two easy consequences:
+\begin{corollary}
+  Given two morphisms among schemes locally of finite type over $\complex$
+  \begin{center}
+    \begin{tikzcd}
+      {\schemeOf{X}} \arrow{r}{(\phi, \phi^{*})} & {\schemeOf{Y}} \arrow{r}{(\psi, \psi^{*})} & {\schemeOf{Z}},
+    \end{tikzcd}
+  \end{center}
+  we have $\an{\psi\circ\phi} = \an{\psi} \circ \an{\phi}$
+\end{corollary}
+\begin{proof}
+ Restriction of composition is composition of restriction.
+\end{proof}
+
+\begin{corollary}
+  Let $\Phi = (\phi, \phi^{*}) : \schemeOf{X} \to \schemeOf{Y}$ be a morphism of schemes locally of finite type over $\complex$, we have
+  \begin{center}
+    \begin{tikzcd}
+      {\an{X}} \arrow{r}{{\an{\phi}}} \arrow[hookrightarrow]{d} & {\an{Y}} \arrow[hookrightarrow]{d} \\
+      X \arrow{r}{\phi} & Y
+    \end{tikzcd}
+  \end{center}
+\end{corollary}
+
+
+\section{Sheaf side}

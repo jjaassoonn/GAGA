@@ -1,6 +1,6 @@
 \chapter{Schemes of finite type over $\complex$}
 
-\section{Preliminary Definitions and machinery}
+\section{Some general scheme theory}
 
 Before we can define our main object of interest, {\em schemes of finite type over $\complex$}, we need to introduce some preliminary notions.
 
@@ -62,11 +62,17 @@ Let $\Phi : \schemeOf{X} \to \schemeOf{Y} := (\phi, \phi^*)$ be a morphism of sc
   Composition of morphisms locally of finite type is locally of finite type.
 \end{proposition}
 
-\section{Basic Definitions}
+\section{Basic definitions and properties}
 
-\begin{definition}[Schemes of finite type over $\complex$]\label{def:SchemeLocallyOfFiniteType}
+\begin{definition}[Schemes locally of finite type over $\complex$]\label{def:SchemeLocallyOfFiniteType}
   \lean{SchemeLocallyOfFiniteTypeOverComplex}
-  A scheme $\schemeOf{X}$ is locally of finite type (reps.\ of finite type) over $\complex$ if $\schemeOf{X}$ is a scheme over $\complex$ and the structure morphism $\schemeOf{X} \to \spec{\complex}$ is a morphism locally of finite type (resp.\ of finite type).
+  A scheme $\schemeOf{X}$ is locally of finite type over $\complex$ if $\schemeOf{X}$ is a scheme over $\complex$ and the structure morphism $\schemeOf{X} \to \spec{\complex}$ is a morphism locally of finite type.
+\end{definition}
+
+\begin{definition}[Schemes of finite type over $\complex$]
+  \lean{SchemeOfFiniteType}
+  A scheme $\schemeOf{X}$ is of finite type over $\complex$ if $\schemeOf{X}$ is locally of finite type over $\complex$ and the structure morphism is quasicompact.
+
 \end{definition}
 
 Let us unpack the \Cref{def:SchemeLocallyOfFiniteType} a little:
@@ -127,17 +133,36 @@ Let us unpack the \Cref{def:SchemeLocallyOfFiniteType} a little:
   % finite as well.
 \end{proof}
 
+\begin{lemma} If $U \subseteq \specop A$ is an open subset where $A$ is a finite $\complex$-algebra, then $U$ admits a finite covering of $D(f_{1}),\dots, D(f_{n})$ where $D(x)$ is the basic open around $x \in A$.
+\end{lemma}
+\begin{proof}
+  Since $U$ is open, its complement $U^{\complement}$ is of the form $V(I)$ for some ideal $I$. Since $A$ is a finite $\complex$-algebra, $I$ is the span of $\{f_{1},\dots, f_{n}\}$ for some $f_{i} \in A$. Thus $V(I)$ is $\bigcap_{i}V(f_{i}\cdot R)$ hence $U$ is $\bigcup_{i}D(f_{i})$.
+\end{proof}
+
+\begin{lemma}
+   If $\schemeOf{X}$ is a scheme of finite type over $\complex$ and $V \subseteq X$ is an open subset, then $V$ is quasi-compact.
+\end{lemma}
+\begin{proof}
+  Since $\schemeOf{X}$ is of finite type, it has a {\em\/ finite} affine covering $\mathcal{U}_{i} = \{U_{1},\dots, U_{n}\}$.
+  It is sufficient to show that every open cover of $U_{i} \cap V$ has a finite subcover\footnote{finite union of quasicompact set is again quasicompact}. In another word, we only need to show if $\schemeOf{X} \cong \spec A$ is affine and $V$ is an open subset of $X$, then $V$ is quasicompact. Since $V$ is a {\em finite\/} union of $D(f_{1}),\dots, D(f_{n})$ for some $f_{i}$'s in $A$, we only need to show that $D(f)$ is quasicompact. Since $D(f)$ is affine, it is quasicompact.
+\end{proof}
+
+\begin{corollary}[restriction of scheme of finite type over $\complex$]
+  \lean{SchemeOfFiniteType.restrict}
+  Let $\schemeOf{X}$ be a scheme of finite type over $\complex$ and $U \subseteq X$ be open, then the restriction $(U, \mathcal{O}_{X}|_{U})$ is a scheme of finite type over $\complex$ as well.
+\end{corollary}
+
 \begin{proposition}
   Let $\spec A$ and $\spec B$ be two affine finite schemes over $\complex$. Then any morphism $\Phi : \spec A \to \spec B$ is of the form $(\phi, \phi^{\star})$ where $\phi : B \to A$ is a $\complex$-algebra homomorphism.
 \end{proposition}
 
 \begin{proof}
-  We have a ring homorphism $\phi$, just need to check it commutes with algebra map.
+  We have a ring homomorphism $\phi$, just need to check it commutes with algebra map.
 \end{proof}
 
 Maybe we should construct the following and recover the previous lemma as a corollary:
 \begin{proposition}
-  The category of affine scheme over $\complex$ is antequivalent to commutative $\complex$-algebras.
+  The category of affine scheme over $\complex$ is antiquivalent to commutative $\complex$-algebras.
   The category of affine finite scheme over $\complex$ is antiequivalent to finitely generated commutative $\complex$-algebras.
   \[
     \asch_{\complex}^{\mathsf{op}}\cong \calgebra{\complex}
