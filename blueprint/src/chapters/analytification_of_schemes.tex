@@ -1,8 +1,3 @@
-%%% Local Variables: ***
-%%% mode:latex ***
-%%% TeX-master: "../content"
-%%% End: ***
-
 \chapter{Analytification of a scheme}
 
 
@@ -80,7 +75,20 @@ Now we have proven that the complex topology is independent of generators, we ca
     \end{tikzcd},
   \end{center}
   where $\theta$ is the surjective $\complex$-algebra homomorphism $R \to S$.
-  The red arrows are continuous, since they define the complex topology; $\specop \theta$ is continuous as well. To prove $\lambda_{S}$ is continuous, we only need to prove the special case $\lambda R$ where $R = \complex[X_{1},\dots, X_{n}]$. Since $\specop R$ has a basis of basic open set $D(f)$, we only need to check that $D(f) \cap \an{\left(\specop R\right)}$ is open for any polynomial $f \in \complex[X_{1}, \dots, X_{n}]$, indeed the intersection is equal to $\{x \in \complex^{n}| f(x) \ne 0 \}$ thus open\footnote{$\mathfrak{p} \in D(f)$ if and only if $f \not\in \mathfrak{p}$. Hence $\mathfrak{m}$ is in the intersection if and onlyv if $\mathfrak{m}$ is equal to the kernel of evaluation map $\phi_{a}$ at some point $a$ and that $f$ is not in the kernel, in another word, $f(a) \ne 0$.}\footnote{should this be a separate lemma?}. %FIXME
+  The red arrows are continuous, since they define the complex topology; $\specop \theta$ is continuous as well. To prove $\lambda_{S}$ is continuous, we only need to prove the special case $\lambda_{R}$ where $R = \complex[X_{1},\dots, X_{n}]$. Since $\specop R$ has a basis of basic open set $D(f)$, we only need to check that $D(f) \cap \an{\left(\specop R\right)}$ is open for any polynomial $f \in \complex[X_{1}, \dots, X_{n}]$, indeed the intersection is equal to $\{x \in \complex^{n}| f(x) \ne 0 \}$ thus open\footnote{$\mathfrak{p} \in D(f)$ if and only if $f \not\in \mathfrak{p}$. Hence $\mathfrak{m}$ is in the intersection if and onlyv if $\mathfrak{m}$ is equal to the kernel of evaluation map $\phi_{a}$ at some point $a$ and that $f$ is not in the kernel, in another word, $f(a) \ne 0$.}\footnote{should this be a separate lemma?}. %FIXME
+
+\end{proof}
+
+\begin{lemma}
+  Let $a_{1},\dots, a_{n}$ be a set of generators of $S$ as $\complex$-algebra and $R$ be $\complex[X_{1},\dots,X_{n}]$ and $\theta : R \to S$ be the surjective map defined by $\theta(X_{i})=a_{i}$.
+  The image of $\specop{\theta} : \an{\specop{S}} \to \an{\specop{R}}\cong\complex^{n}$ is
+  \[
+    V(\ker\theta):=\{(x_{1},\dots,x_{m})| f_{i}(x_{1},\dots,x_{n})=0\} = \{(x_{1},\dots,x_{m})| p(x_{1},\dots,x_{n})=0~\text{for all}~p\in \ker{\theta}\},
+  \]
+  where $f_{i}$ generates $\ker\theta$.
+\end{lemma}
+\begin{proof}
+  $x = (x_{1},\dots,x_{n})\in\operatorname{image}\an{\specop\theta}$ if and only if $\psi_{x}$, evaluation at $x$, annilates the kernel of $\theta$ by \Cref{thm:maxspecop-alg-hom-annihilate}
 \end{proof}
 
 \begin{theorem}\label{thm:continuous-an-spec-complex-toplogy}
@@ -227,4 +235,21 @@ Here are two easy consequences:
 In previous section, we have showed that for any scheme $\schemeOf{X}$ locally of finite type over $\complex$, we can make a topological space $\an{X}$ with the complex topology. In this section, we aim to make a sheaf $\an{\mathcal{O}_{X}}$ on $\an{X}$. We will consider the affine cases $\spec{S}$ where $S$ is a finite $\complex$-algebra by choosing generators; then we prove that the construction does not dependent on the choice of generators; then we glue everything together.
 
 \subsection{Affine schemes}
-Let $S$ be a finite $\complex$-algebra, we choose generators $a_{1},\dots, a_{n}$ and write $\complex[X_{1},\dots,X_{n}]$ as $R$. Thus we have a surjective $\complex$-algebra homomorphism $\theta: R \to S$ such that $\theta(X_{i}) = a_{i}$. Then $\ker\theta$ is finitely generated as well, say by $f_{1},\dots,f_{m}$. We do constructions using $f_{1},\dots, f_{m}$, so everything depends on the choice of $a_{1},\dots,a_{n}$.
+Let $S$ be a finite $\complex$-algebra, we choose generators $a_{1},\dots, a_{n}$ and write $\complex[X_{1},\dots,X_{n}]$ as $R$. Thus we have a surjective $\complex$-algebra homomorphism $\theta: R \to S$ such that $\theta(X_{i}) = a_{i}$. Then $\ker\theta$ is finitely generated as well, say by $f_{1},\dots,f_{m}$. We do constructions using $f_{1},\dots, f_{m}$, so everything depends on the choice of $a_{1},\dots,a_{n}$. In this section, we also denote the sheaf of holomorphic function as $\mathcal{H}$.
+
+We use a specialized basis of topology on $\complex^{n}$.
+\begin{definition}[Generalized polydiscs]\label{def:generalized-polydisc}
+  A generalized polydisc $\Delta(g_{1},\dots,g_{l}; w_{1},\dots, w_{l}; r_{1},\dots, r_{l})$ is the set $\left\{x \in \complex^{n}| \left|g_{i}(x) - w_{i}\right| < r_{i}~\text{for all}~i = 1,\dots,l \right\}$ where $g_{i} \in \complex[X_{1}\dots,X_{n}]$, $w := (w_{1},\dots, w_{n}) \in \complex^{l}$ and $r := (r_{1},\dots,r_{l})\in\mathbb{R}^{l}_{\ge0}$. We call $w$ the center of the polydisc and $r$ the polyradius\footnote{Different polydiscs can have different $l$}.
+\end{definition}
+
+\begin{example}\label{polydisc-top}
+  The whole $\complex^{n}$ is a generalized polydisc.
+\end{example}
+\begin{proof}
+  Consider $\Delta(g = 0; w = 0; r = 1)$, this is the whole $\complex^{n}$.
+\end{proof}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../content"
+%%% End:

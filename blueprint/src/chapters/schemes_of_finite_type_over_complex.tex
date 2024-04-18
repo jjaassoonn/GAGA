@@ -172,6 +172,13 @@ Maybe we should construct the following and recover the previous lemma as a coro
   \]
 \end{proposition}
 
+\begin{lemma}\label{thm:surjective-alg-hom-induces-embedding-affine}
+  Let $\phi : R \to S$ be a surjective $\complex$-algebra homomorphisms between finite $\complex$-algebras, then $\specop\phi : \specop{S} \to \specop{R}$ is an embedding.
+\end{lemma}
+\begin{proof}
+  $\specop\phi$ is injective since $\phi$ is surjective. We need to check that every open set in $\specop S$ is an inverse image of some open set in $\specop R$. Since $\specop{S}$ has a basis of basic open sets $D(f)$'s where $f \in S$, we only need to check $D(f)$ is the inverse image of some open set in $\specop R$. Since $\theta$ is surjective, we know that $\theta(r) = f$ for some $r \in R$. Then $D(f) \subseteq \specop S$ is the inverse image of $D(r) \subseteq \specop R$.
+\end{proof}
+
 \section{Closed points}
 In this section, we focus on the subset set of closed points of a scheme locally of finite type over $\complex$, preparing for the complex topology. Let us fix some notation first: for an arbitrary scheme $\schemeOf{X}$, we denote $\maxop{X}$ to be the set of all closed points of $X$ and $\maxspecop R$ to be the set of all maximal ideals of a ring $R$. Note that $\maxspecop R$ is exactly $\maxop{\specop{R}}$ and we use both interchangeably.
 
@@ -249,12 +256,32 @@ When we talk about topology on $\maxop{X}$, we mean the subspace topology induce
 \end{corollary}
 
 \begin{proof}
-  Write $\Phi= (\phi, \phi^{*})$, note that $\phi$ is necessarily an embedding $X \hookrightarrow Y$ thus $\maxop\phi$ being the restriction of $\phi$ must be embedding as well.
+  Write $\Phi= (\phi, \phi^{*})$, note that $\phi$ is necessarily an embedding $X \hookrightarrow Y$ thus $\maxop\phi$ being the restriction of $\phi$ must be embedding as well:
+  \begin{center}
+    \begin{tikzcd}
+      {\maxop{X}} \arrow{r}{\maxop\phi} \arrow[hookrightarrow]{d} & \maxop{Y} \arrow[hookrightarrow]{d} \\
+      X \arrow[hookrightarrow]{r}{\phi} & Y
+    \end{tikzcd}
+  \end{center}
+  where the vertical arrows and $\phi$ are embeddings so $\maxop\phi$ is embedding as well.
 \end{proof}
+
+By the same argument and using \Cref{thm:surjective-alg-hom-induces-embedding-affine}, we can prove the following lemma
+\begin{lemma}
+  Let $\theta: R \to S$ be a surjective $\complex$-algebra homomorphism between finite $\complex$-algebras.
+  $\maxspecop \theta$ is an embedding.
+\end{lemma}
 
 \begin{remark}
   Let $X$ be a scheme locally of finite type over $\complex$ and $\mathcal{U} = \{U_{i}\}$ be an open cover of $X$. Then $\maxop{X} = \bigcup_{i}\maxop{U_{i}}$, so that $\maxop{\mathcal{U}} = \{\maxop{U_{i}}\}$ is a Zariski open cover for $\maxop{X}$
 \end{remark}
+
+\begin{lemma}\label{thm:maxspecop-alg-hom-annihilate}
+   Let $\theta: R \to S$ be a surjective $\complex$-algebra homomorphism between finite $\complex$-algebras. Then the image of $\maxspecop\theta : \maxspecop{S} \to \maxspecop{R}$ is identified via \Cref{thm:affine-scheme-closed-points-biject-algebra-hom} with the set of $\complex$-algebra homomorphisms $\psi : R \to \complex$ such that $\psi(\ker\theta) = 0$.
+\end{lemma}
+\begin{proof}
+  Let $\mathfrak{m} \subseteq R$ be a maximal ideal inside the image of $\maxspecop\theta$, i.e. there exists a maximal ideal $\mathfrak{p} \subseteq S$ such that $\theta^{-1}\mathfrak{p}=\mathfrak{m}$. $\mathfrak{m}$ corresponds to the unique algebra homomorphism $\phi_{\mathfrak{m}} : R \to \complex$ whose kernel is $\mathfrak{m}$ and $\mathfrak{p}$ corresponds to the unique algebra homorphism $\psi_{\mathfrak{p}} : S \to \complex$ whose kernel is $\mathfrak{p}$. Thus $\theta^{-1}\mathfrak{p} = \mathfrak{m}$ precesily when $\psi_{\mathfrak{p}} \circ \theta = \phi_{\mathfrak{m}}$; and this happens precisely when $\psi_{\mathfrak{p}}$ annaliates the kernel of $\theta$.
+\end{proof}
 
 \begin{remark}
   If we are only considering schemes (locally of) finite type over $\complex$, any morphism of ringed space over $\complex$ is automatically a morphism of {\em locally\/} ringed space over $\complex$.
