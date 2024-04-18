@@ -70,7 +70,7 @@ Let $\Phi : \schemeOf{X} \to \schemeOf{Y} := (\phi, \phi^*)$ be a morphism of sc
 \end{definition}
 
 \begin{definition}[Schemes of finite type over $\complex$]
-  \lean{SchemeOfFiniteType}
+  \lean{SchemeOfFiniteTypeOverComplex}
   A scheme $\schemeOf{X}$ is of finite type over $\complex$ if $\schemeOf{X}$ is locally of finite type over $\complex$ and the structure morphism is quasicompact.
 
 \end{definition}
@@ -148,7 +148,7 @@ Let us unpack the \Cref{def:SchemeLocallyOfFiniteType} a little:
 \end{proof}
 
 \begin{corollary}[restriction of scheme of finite type over $\complex$]
-  \lean{SchemeOfFiniteType.restrict}
+  \lean{SchemeOfFiniteTypeOverComplex.restrict}
   Let $\schemeOf{X}$ be a scheme of finite type over $\complex$ and $U \subseteq X$ be open, then the restriction $(U, \mathcal{O}_{X}|_{U})$ is a scheme of finite type over $\complex$ as well.
 \end{corollary}
 
