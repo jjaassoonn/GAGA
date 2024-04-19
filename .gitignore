@@ -14,6 +14,6 @@ lean_decls
 /blueprint/src/macros/.auctex-auto/
 /blueprint/src/.auctex-auto/
 /blueprint/src/chapters/_region_.tex
-*.bbl
+print.bbl
 *.blg
 /blueprint/src/print.pdf
