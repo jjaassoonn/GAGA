@@ -27,7 +27,7 @@ We already have the following in {\sf mathlib4} thanks to Andrew Yang:
 
 \begin{definition}
   \lean{AlgebraicGeometry.targetAffineLocally}
-  If $P$ is a property of ring homomorphisms then the property {\rm affine locally}~$P$ of scheme morphism $(\phi, \phi^*): \schemeOf{X} \to \schemeOf{Y}$ holds if and only if $P$ holds for all ring homomorphism $\Gamma(U, \mathcal{O}_X) \to \Gamma(V, \mathcal{O}_Y)$ for all affine subsets $U \subseteq X$ and $V \subseteq Y$ such that $\phi(U) \le V$.
+  If $P$ is a property of ring homomorphisms then the property {\rm affine locally}~$P$ of scheme morphism $(\phi, \phi^*): \schemeOf{X} \to \schemeOf{Y}$ holds if and only if $P$ holds for all ring homomorphism $\Gamma(U, \mathscr{O}_X) \to \Gamma(V, \mathscr{O}_Y)$ for all affine subsets $U \subseteq X$ and $V \subseteq Y$ such that $\phi(U) \le V$.
 
 \end{definition}
 
@@ -35,7 +35,7 @@ We already have the following in {\sf mathlib4} thanks to Andrew Yang:
   \lean{AlgebraicGeometry.LocallyOfFiniteType}
 Let $\Phi : \schemeOf{X} \to \schemeOf{Y} := (\phi, \phi^*)$ be a morphism of schemes. We say
 \begin{enumerate}
-    \item $\Phi$ is locally of finite type if for any affine open $V \subseteq Y$ and affine open $U \subseteq X$ such that $\phi(U) \subseteq V$, we have the induced map $\Gamma(U, \mathcal{O}_X) \to \Gamma(V, \mathcal{O}_V)$ is a ring map of finite type. In another word, $\Phi$ is affine locally a ring homomorphism of finite type.
+    \item $\Phi$ is locally of finite type if for any affine open $V \subseteq Y$ and affine open $U \subseteq X$ such that $\phi(U) \subseteq V$, we have the induced map $\Gamma(U, \mathscr{O}_X) \to \Gamma(V, \mathscr{O}_V)$ is a ring map of finite type. In another word, $\Phi$ is affine locally a ring homomorphism of finite type.
     \item $\Phi$ is of finite type if it is locally of finite type and $\phi$ is quasi-compact.
 \end{enumerate}
 \end{definition}
@@ -47,14 +47,14 @@ Let $\Phi : \schemeOf{X} \to \schemeOf{Y} := (\phi, \phi^*)$ be a morphism of sc
 
 \begin{proposition}\label{thm:affine-locally-source-cover}
   \lean{AlgebraicGeometry.LocallyOfFiniteType.source_openCover_iff}
-  Let $\Phi : \schemeOf{X} \to \schemeOf{Y}$ be a morphism of schemes and $\mathcal{U} = \{U_{i}\}$ be an open covering of $X$, then affine locally $\Phi$ is locally of finite type if and only if $\Phi|_{U_i}$ is a morphism locally of finite type.
+  Let $\Phi : \schemeOf{X} \to \schemeOf{Y}$ be a morphism of schemes and $\mathscr{U} = \{U_{i}\}$ be an open covering of $X$, then affine locally $\Phi$ is locally of finite type if and only if $\Phi|_{U_i}$ is a morphism locally of finite type.
 \end{proposition}
 
 \begin{proposition}\label{thm:affine-cover-locally-of-finite-type}
   \lean{AlgebraicGeometry.LocallyOfFiniteType.affine_openCover_iff}
-  Let $\Phi : \schemeOf{X} \to \schemeOf{Y}$ be a morphism of schemes and $\mathcal{U}=\{U_{i}\}$ be an affine open covering of $Y$. Consider the pullback cover $\mathcal{V} = \{V_{i}\}$ of $X$, and if for each $i$, there is
-  an affine open cover $\mathcal{W}_{i} = \{W_{i, j}\}$ for $V_{i} \subseteq X$. Then $\Phi$ is locally of finite type if and only if, for each $i$ and $j$, the ring map
-  $\Gamma(W_{i, j}, \mathcal{O}_{X}) \to \Gamma(U_{i}, \mathcal{O}_{Y})$ is of finite type.
+  Let $\Phi : \schemeOf{X} \to \schemeOf{Y}$ be a morphism of schemes and $\mathscr{U}=\{U_{i}\}$ be an affine open covering of $Y$. Consider the pullback cover $\mathscr{V} = \{V_{i}\}$ of $X$, and if for each $i$, there is
+  an affine open cover $\mathscr{W}_{i} = \{W_{i, j}\}$ for $V_{i} \subseteq X$. Then $\Phi$ is locally of finite type if and only if, for each $i$ and $j$, the ring map
+  $\Gamma(W_{i, j}, \mathscr{O}_{X}) \to \Gamma(U_{i}, \mathscr{O}_{Y})$ is of finite type.
 \end{proposition}
 
 \begin{proposition}\label{thm:locally_of_finite_type_comp}
@@ -107,19 +107,19 @@ Let us unpack the \Cref{def:SchemeLocallyOfFiniteType} a little:
   \lean{SchemeLocallyOfFiniteTypeOverComplex.restrict}
   \leanok{}
   \uses{def:SchemeLocallyOfFiniteType}
-  Let $\schemeOf{X}$ be a scheme locally of finite type over $\complex$, let $U \subseteq X$ be an open subset, then $(U, \mathcal{O}_{X}\mid_{U})$ is a scheme locally of finite type over $\complex$.
+  Let $\schemeOf{X}$ be a scheme locally of finite type over $\complex$, let $U \subseteq X$ be an open subset, then $(U, \mathscr{O}_{X}\mid_{U})$ is a scheme locally of finite type over $\complex$.
   \label{thm:restriction-of-scheme-of-finite-type-is-scheme-of-finite-type}
 \end{proposition}
 \begin{proof}
   By \Cref{thm:affine-locally-open-immersion} and \Cref{thm:locally_of_finite_type_comp}, open immersions are locally of finite type and composition of morphisms locally of finite type is again locally of finite type, so
   \[
-    \left(U, \mathcal{O}_{X}|_{U}\right) \hookrightarrow \schemeOf{X} \to \spec\complex
+    \left(U, \mathscr{O}_{X}|_{U}\right) \hookrightarrow \schemeOf{X} \to \spec\complex
   \]
   is a morphism locally of finite type as well.
 \end{proof}
 
 \begin{proposition}\label{thm:affine-open-is-finite-algebra}
-  If $\schemeOf{X}$ is a scheme locally of finite type over $\complex$, and $U = \spec A$ is an open affine subscheme of $\schemeOf{X}$, then $A \cong \Gamma(U, \mathcal{O}_{X})$ is a finitely generated $\complex$-algebra as well.
+  If $\schemeOf{X}$ is a scheme locally of finite type over $\complex$, and $U = \spec A$ is an open affine subscheme of $\schemeOf{X}$, then $A \cong \Gamma(U, \mathscr{O}_{X})$ is a finitely generated $\complex$-algebra as well.
   \lean{SchemeLocallyOfFiniteTypeOverComplex.inst_sections_finite}
   \leanok
   \uses{def:SchemeLocallyOfFiniteType,thm:affine-cover-locally-of-finite-type}
@@ -143,13 +143,13 @@ Let us unpack the \Cref{def:SchemeLocallyOfFiniteType} a little:
    If $\schemeOf{X}$ is a scheme of finite type over $\complex$ and $V \subseteq X$ is an open subset, then $V$ is quasi-compact.
 \end{lemma}
 \begin{proof}
-  Since $\schemeOf{X}$ is of finite type, it has a {\em\/ finite} affine covering $\mathcal{U}_{i} = \{U_{1},\dots, U_{n}\}$.
+  Since $\schemeOf{X}$ is of finite type, it has a {\em\/ finite} affine covering $\mathscr{U}_{i} = \{U_{1},\dots, U_{n}\}$.
   It is sufficient to show that every open cover of $U_{i} \cap V$ has a finite subcover\footnote{finite union of quasicompact set is again quasicompact}. In another word, we only need to show if $\schemeOf{X} \cong \spec A$ is affine and $V$ is an open subset of $X$, then $V$ is quasicompact. Since $V$ is a {\em finite\/} union of $D(f_{1}),\dots, D(f_{n})$ for some $f_{i}$'s in $A$, we only need to show that $D(f)$ is quasicompact. Since $D(f)$ is affine, it is quasicompact.
 \end{proof}
 
 \begin{corollary}[restriction of scheme of finite type over $\complex$]
   \lean{SchemeOfFiniteTypeOverComplex.restrict}
-  Let $\schemeOf{X}$ be a scheme of finite type over $\complex$ and $U \subseteq X$ be open, then the restriction $(U, \mathcal{O}_{X}|_{U})$ is a scheme of finite type over $\complex$ as well.
+  Let $\schemeOf{X}$ be a scheme of finite type over $\complex$ and $U \subseteq X$ be open, then the restriction $(U, \mathscr{O}_{X}|_{U})$ is a scheme of finite type over $\complex$ as well.
 \end{corollary}
 
 \begin{proposition}
@@ -211,7 +211,7 @@ In this section, we focus on the subset set of closed points of a scheme locally
   Let $x \in X$ be a closed point and an affine open neighbourhood of $x \in U \cong \spec A$ where $A$ is a finite $\complex$-algebra. Thus the $x$ corresponds to a morphism $\Phi_{A}$ between $\spec \complex$ and $\spec A$ by \cref{cor:affine-closed-point-bijection-scheme-morphism}; we define $\Psi_{x}$ to be the composition of
   \begin{center}
     \begin{tikzcd}
-      \spec\complex \ar[r, "\Phi_{A}"] & \spec A \ar[r, "\sim"]  & {\left(U, {\mathcal{O}_{X}\!\mid_{U}}\right)} \ar[r, hookrightarrow] & \schemeOf{X}.
+      \spec\complex \ar[r, "\Phi_{A}"] & \spec A \ar[r, "\sim"]  & {\left(U, {\mathscr{O}_{X}\!\mid_{U}}\right)} \ar[r, hookrightarrow] & \schemeOf{X}.
     \end{tikzcd}
   \end{center}
   Moreover, $\Psi_{x}$ does not dependent on the choice of affine neighbourhood $\specop A$: suppose $x \in \specop A \cap \specop B$, then $\specop A \cap \specop B$ admits an open covering of spectra of finitely generated $\complex$-algebras by \Cref{thm:restriction-of-scheme-of-finite-type-is-scheme-of-finite-type}. Thus we can find a finitely generated $\complex$-algebra $C$ such that $\specop C \subseteq \specop A \cap \specop B$.
@@ -273,7 +273,7 @@ By the same argument and using \Cref{thm:surjective-alg-hom-induces-embedding-af
 \end{lemma}
 
 \begin{remark}
-  Let $X$ be a scheme locally of finite type over $\complex$ and $\mathcal{U} = \{U_{i}\}$ be an open cover of $X$. Then $\maxop{X} = \bigcup_{i}\maxop{U_{i}}$, so that $\maxop{\mathcal{U}} = \{\maxop{U_{i}}\}$ is a Zariski open cover for $\maxop{X}$
+  Let $X$ be a scheme locally of finite type over $\complex$ and $\mathscr{U} = \{U_{i}\}$ be an open cover of $X$. Then $\maxop{X} = \bigcup_{i}\maxop{U_{i}}$, so that $\maxop{\mathscr{U}} = \{\maxop{U_{i}}\}$ is a Zariski open cover for $\maxop{X}$
 \end{remark}
 
 \begin{lemma}\label{thm:maxspecop-alg-hom-annihilate}
