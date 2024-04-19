@@ -238,7 +238,7 @@ In previous section, we have showed that for any scheme $\schemeOf{X}$ locally o
 Let $S$ be a finite $\complex$-algebra, we choose generators $a_{1},\dots, a_{n}$ and write $\complex[X_{1},\dots,X_{n}]$ as $R$. Thus we have a surjective $\complex$-algebra homomorphism $\theta: R \to S$ such that $\theta(X_{i}) = a_{i}$. Then $\ker\theta$ is finitely generated as well, say by $f_{1},\dots,f_{m}$.
 Note that the image of $\an{\specop\theta}:\an{\specop S}\to\an{\specop\complex[X_{1},\dots, X_{n}]}\cong \complex^{n}$, which we often just write as $\an{\specop\theta}$ as well, is in bijection with $V(\ker\theta) := \{x \in \complex^{n}\mid f_{i}(x) = 0~\text{for all}~i\}$\footnote{by \Cref{thm:maxspecop-alg-hom-annihilate}}; hence is closed in $\complex^{n}$ because its the intersection of inverse images of the singleton set $\{0\}$.
 
-We do constructions using $f_{1},\dots, f_{m}$, so everything depends on the choice of $a_{1},\dots,a_{n}$. In this section, we also denote the sheaf of holomorphic function as $\mathcal{Hol}$ where $\sections{\mathcal{Hol}}{U} := \{f : U \to \complex | f~\text{is holomorphic}\}$ for any open subset $U \subseteq \complex^{n}$.
+We do constructions using $f_{1},\dots, f_{m}$, so everything depends on the choice of $a_{1},\dots,a_{n}$. In this section, we also denote the sheaf of holomorphic function as $\sheafHol$ where $\sections{\sheafHol}{U} := \{f : U \to \complex | f~\text{is holomorphic}\}$ for any open subset $U \subseteq \complex^{n}$.
 
 We use a specialized basis of topology on $\complex^{n}$.
 \begin{definition}[Generalized polydiscs]\label{def:generalized-polydisc}
@@ -266,18 +266,18 @@ The following terminology is nonstandard.
   We have a sheaf $\mathcal{O}^{\mathsf{pre}}$ on $\complex^{n}$ is defined to be the cokernel sheaf of the following exact sequence:
 	\begin{center}
 		\begin{tikzcd}
-			{\mathcal{Hol}^{\oplus m}} \arrow{r} & {\mathcal{Hol}} \arrow{r} & {\mathcal{O}^{\mathsf{pre}}} \arrow{r} & 0,
+			{\sheafHol^{\oplus m}} \arrow{r} & {\sheafHol} \arrow{r} & {\mathcal{O}^{\mathsf{pre}}} \arrow{r} & 0,
 		\end{tikzcd}
 	\end{center}
-	where the first arrow, on $U$, is given by $(a_{1},\dots,a_{m}) \mapsto f_{1}|_{U}\smul a_{1}+\cdots+f_{m}|_{U}\smul a_{m}$ where $a_{i} \in \sections{\mathcal{Hol}}{U}$ and $f_{i}$ generates $\ker\theta$
+	where the first arrow, on $U$, is given by $(a_{1},\dots,a_{m}) \mapsto f_{1}|_{U}\smul a_{1}+\cdots+f_{m}|_{U}\smul a_{m}$ where $a_{i} \in \sections{\sheafHol}{U}$ and $f_{i}$ generates $\ker\theta$
 \end{definition}
 
 \begin{lemma}
-	On generalized polydiscs $\Delta_{1} \subseteq \Delta_{2}$, $\sections{\mathcal{O}^{\mathsf{pre}}}{\Delta_{1}}$ is isomorphic to \[\quotient{\sections{\mathcal{Hol}}{\Delta_{1}}}{\ker\theta\smul\sections{\mathcal{Hol}}{\Delta_{1}}}\] and the restriction map $\sections{{\mathcal{O}^{\mathsf{pre}}}}{\Delta_{2}} \to \sections{{\mathcal{O}^{\mathsf{pre}}}}{\Delta_{1}}$ is the restriction map
+	On generalized polydiscs $\Delta_{1} \subseteq \Delta_{2}$, $\sections{\mathcal{O}^{\mathsf{pre}}}{\Delta_{1}}$ is isomorphic to \[\quotient{\sections{\sheafHol}{\Delta_{1}}}{\ker\theta\smul\sections{\sheafHol}{\Delta_{1}}}\] and the restriction map $\sections{{\mathcal{O}^{\mathsf{pre}}}}{\Delta_{2}} \to \sections{{\mathcal{O}^{\mathsf{pre}}}}{\Delta_{1}}$ is the restriction map
 	\[
 		\mathrm{res} :
-		\quotient{\sections{\mathcal{Hol}}{\Delta_{2}}}{\ker\theta\smul\sections{\mathcal{Hol}}{\Delta_{2}}} \to
-		\quotient{\sections{\mathcal{Hol}}{\Delta_{1}}}{\ker\theta\smul\sections{\mathcal{Hol}}{\Delta_{1}}}
+		\quotient{\sections{\sheafHol}{\Delta_{2}}}{\ker\theta\smul\sections{\sheafHol}{\Delta_{2}}} \to
+		\quotient{\sections{\sheafHol}{\Delta_{1}}}{\ker\theta\smul\sections{\sheafHol}{\Delta_{1}}}
 	\]
 	defined by $[f] \mapsto [f\mid_{U}]$.
 \end{lemma}
@@ -288,10 +288,10 @@ The following terminology is nonstandard.
 % % {\bf The following might to be a good idea in formalisation.} I will define $\an{\mathcal{O}_{X}}$ by defining it only on basis, then extend it. For arbitrary open subsets $U \subseteq V$, we have the following
 % % \begin{center}
 % %   \begin{tikzcd}
-% %    \complex[X_{1},\dots, X_{n}] \arrow[hookrightarrow, red]{r} & \sections(\mathcal{Hol}, \complex^n) \arrow[red]{r}{\mathrm{res}} & \sections(\mathcal{Hol}, U) \arrow[two heads]{r} & \quotient{\sections(\mathcal{Hol}, U)}{\ker\theta\smul\sections(\mathcal{Hol}, U)},
+% %    \complex[X_{1},\dots, X_{n}] \arrow[hookrightarrow, red]{r} & \sections(\sheafHol, \complex^n) \arrow[red]{r}{\mathrm{res}} & \sections(\sheafHol, U) \arrow[two heads]{r} & \quotient{\sections(\sheafHol, U)}{\ker\theta\smul\sections(\sheafHol, U)},
 % %   \end{tikzcd}
 % % \end{center}
-% % where the first arrow is an inclusion since all polynomials are holomorphic; the second arrow is the restriction map of $\mathcal{H}$. Here $\ker\theta\smul \sections(\mathcal{Hol}, U)$ is the image of $\ker\theta$ of the composition of the two read arrows.
+% % where the first arrow is an inclusion since all polynomials are holomorphic; the second arrow is the restriction map of $\mathcal{H}$. Here $\ker\theta\smul \sections(\sheafHol, U)$ is the image of $\ker\theta$ of the composition of the two read arrows.
 % % We can also define the restriction of  Unfortunately, this is not a sheaf on $\complex^{n}$, but it is indeed a sheaf on the basis of generalized polydiscs of $\complex^{n}$
 
 \begin{lemma}\label{thm:trivial-preanalytification-sheaf-on-generalized-polydisc-outside}
@@ -299,7 +299,7 @@ The following terminology is nonstandard.
   There is an open subset $x \in U \subseteq \complex^{n}$ such that for any generalized polydiscs $\Delta \subseteq U$, we have $\sections{\mathcal{O}^{\mathsf{pre}}}{\Delta} = 0$.
 \end{lemma}
 \begin{proof}
-  By \Cref{thm:maxspecop-alg-hom-annihilate}, $x$ is not in the image of $\an{\specop{S}}$ precisely when at least one of the $f_{i}(x) \ne 0$. Say it's the first one. Then, there is some open neighbourhood $U$ around $x$ such that $f_{1}\mid_{U}$ is nowhere zero, i.e.\ invertible. Thus for any generalized polydisc $\Delta \subseteq U$, we have that the ideal $\ker\theta\smul\sections{\mathcal{Hol}}U$ is everything so that $\sections{\mathcal{O}^{pre}}{\Delta}\cong\quotient{\sections{\mathcal{Hol}}{\Delta}}{\ker\theta\smul\sections{\mathcal{Hol}}{\Delta}}$ is trivial.
+  By \Cref{thm:maxspecop-alg-hom-annihilate}, $x$ is not in the image of $\an{\specop{S}}$ precisely when at least one of the $f_{i}(x) \ne 0$. Say it's the first one. Then, there is some open neighbourhood $U$ around $x$ such that $f_{1}\mid_{U}$ is nowhere zero, i.e.\ invertible. Thus for any generalized polydisc $\Delta \subseteq U$, we have that the ideal $\ker\theta\smul\sections{\sheafHol}U$ is everything so that $\sections{\mathcal{O}^{pre}}{\Delta}\cong\quotient{\sections{\sheafHol}{\Delta}}{\ker\theta\smul\sections{\sheafHol}{\Delta}}$ is trivial.
 \end{proof}
 \begin{corollary}[$\mathcal{O}^{\mathsf{pre}}$ is supported in $\an{\specop{S}}$]\label{thm:trivial-preanalytification-sheaf-on-outside-open-set}
 \uses{thm:trivial-preanalytification-sheaf-on-generalized-polydisc-outside}
@@ -335,7 +335,7 @@ The following terminology is nonstandard.
 This defines a presheaf, the satisfaction of sheaf axioms are essentially from that of $\mathcal{O}^{\mathsf{pre}}$.
 \end{definition}
 
-\begin{remark}[Independence of the generators $f_{1},\dots, f_{m}$] Though the definition of $\mathcal{O}^{\mathsf{pre}}$ explicity uses $f_{i}$'s, we see that on the basis of generalized polydiscs, the sections on a generalized polydisc is $\quotient{\sections{\mathcal{Hol}}{\Delta}}{\ker\theta\smul\sections{\mathcal{Hol}}{\Delta}}$ which does not mention any generators. Since two sheaves are isomorphic if their sections on a basis are isomorphic, we must conclude that $\mathcal{O}^{\mathsf{pre}}$ is independent of the choice of $f_{1},\dots,f_{m}$ as well. But we don't know yet if the construction is independent from the choice of $a_{1},\dots, a_{m}$.
+\begin{remark}[Independence of the generators $f_{1},\dots, f_{m}$] Though the definition of $\mathcal{O}^{\mathsf{pre}}$ explicity uses $f_{i}$'s, we see that on the basis of generalized polydiscs, the sections on a generalized polydisc is $\quotient{\sections{\sheafHol}{\Delta}}{\ker\theta\smul\sections{\sheafHol}{\Delta}}$ which does not mention any generators. Since two sheaves are isomorphic if their sections on a basis are isomorphic, we must conclude that $\mathcal{O}^{\mathsf{pre}}$ is independent of the choice of $f_{1},\dots,f_{m}$ as well. But we don't know yet if the construction is independent from the choice of $a_{1},\dots, a_{m}$.
 \end{remark}
 
 %%% Local Variables:
