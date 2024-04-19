@@ -157,7 +157,7 @@ More generally, we have a corresponding lemma for arbitrary finite $\complex$-al
 \subsection{Arbitrary scheme}
 
 \begin{definition}[Complex Topology]
-	Let $\schemeOf{X}$ be a scheme locally of finite type over $\complex$, let $\mathcal{I}$ be the collection of open immersions $\spec R \to X$ where $R$ is some finite $\complex$-algebra. Then the complex topology on the set of closed points $\max X$ is defined as the weak topology with respect to $\left\{\an{{\phi}} | (\phi, \phi^{*}) \in \mathcal{I}\right\}$ where $\an{\phi}$ is the restriction of $\phi$ to the subset of closed points. When we talk about complex toplogy, we write $\max{X}$ as $\an{X}$.
+	Let $\schemeOf{X}$ be a scheme locally of finite type over $\complex$, let $\mathscr{I}$ be the collection of open immersions $\spec R \to X$ where $R$ is some finite $\complex$-algebra. Then the complex topology on the set of closed points $\max X$ is defined as the weak topology with respect to $\left\{\an{{\phi}} | (\phi, \phi^{*}) \in \mathscr{I}\right\}$ where $\an{\phi}$ is the restriction of $\phi$ to the subset of closed points. When we talk about complex toplogy, we write $\max{X}$ as $\an{X}$.
 \end{definition}
 
 % If $\Psi = (\psi, \psi^{*}) : \spec{R} \to X$ is an open immersion where $R$ is a finite $\complex$-algebra, by the definition of the complex topology, we know that $\an{{\psi}}$ is continuous, in fact it is an embedding as well where the image is open. Let $W \subseteq \an{\specop R}$ be an open subset, we need to show the image of $W$, $\an{\psi} W = \psi W$ is open in $\an{X}$. Let $S$ be an arbitrary finite $\complex$-algebra and $\Phi = (\phi, \phi^{*}) : \specop{S} \to \schemeOf{X}$ be an open immersion, we need to show that the inverse image of $\psi W$, ${\an{\phi}}^{-1}\psi W = \phi^{-1}\psi W$, is open in $\an{\specop S}$. Let $U$ be the image of $\phi^{-1}\psi W$ under $\an{\phi}$ and $V$ be the image under $\an{\psi}$. Then we have $\psi W \subseteq \max{V}$ (the closed points in $V$)
@@ -232,13 +232,13 @@ Here are two easy consequences:
 
 \section{Sheaf side}
 
-In previous section, we have showed that for any scheme $\schemeOf{X}$ locally of finite type over $\complex$, we can make a topological space $\an{X}$ with the complex topology. In this section, we aim to make a sheaf $\an{\mathcal{O}_{X}}$ on $\an{X}$. We will consider the affine cases $\spec{S}$ where $S$ is a finite $\complex$-algebra by choosing generators; then we prove that the construction does not dependent on the choice of generators; then we glue everything together.
+In previous section, we have showed that for any scheme $\schemeOf{X}$ locally of finite type over $\complex$, we can make a topological space $\an{X}$ with the complex topology. In this section, we aim to make a sheaf $\an{\mathscr{O}_{X}}$ on $\an{X}$. We will consider the affine cases $\spec{S}$ where $S$ is a finite $\complex$-algebra by choosing generators; then we prove that the construction does not dependent on the choice of generators; then we glue everything together.
 
 \subsection{Affine schemes}
 Let $S$ be a finite $\complex$-algebra, we choose generators $a_{1},\dots, a_{n}$ and write $\complex[X_{1},\dots,X_{n}]$ as $R$. Thus we have a surjective $\complex$-algebra homomorphism $\theta: R \to S$ such that $\theta(X_{i}) = a_{i}$. Then $\ker\theta$ is finitely generated as well, say by $f_{1},\dots,f_{m}$.
 Note that the image of $\an{\specop\theta}:\an{\specop S}\to\an{\specop\complex[X_{1},\dots, X_{n}]}\cong \complex^{n}$, which we often just write as $\an{\specop\theta}$ as well, is in bijection with $V(\ker\theta) := \{x \in \complex^{n}\mid f_{i}(x) = 0~\text{for all}~i\}$\footnote{by \Cref{thm:maxspecop-alg-hom-annihilate}}; hence is closed in $\complex^{n}$ because its the intersection of inverse images of the singleton set $\{0\}$.
 
-We do constructions using $f_{1},\dots, f_{m}$, so everything depends on the choice of $a_{1},\dots,a_{n}$. In this section, we also denote the sheaf of holomorphic function as $\mathcal{Hol}$ where $\sections{\mathcal{Hol}}{U} := \{f : U \to \complex | f~\text{is holomorphic}\}$ for any open subset $U \subseteq \complex^{n}$.
+We do constructions using $f_{1},\dots, f_{m}$, so everything depends on the choice of $a_{1},\dots,a_{n}$. In this section, we also denote the sheaf of holomorphic function as $\mathscr{Hol}$ where $\sections{\mathscr{Hol}}{U} := \{f : U \to \complex | f~\text{is holomorphic}\}$ for any open subset $U \subseteq \complex^{n}$.
 
 We use a specialized basis of topology on $\complex^{n}$.
 \begin{definition}[Generalized polydiscs]\label{def:generalized-polydisc}
@@ -263,21 +263,21 @@ We use a specialized basis of topology on $\complex^{n}$.
 
 The following terminology is nonstandard.
 \begin{definition}[Preanalytification of sheaves.]\label{def:preanalytification-sheaf}
-  We have a sheaf $\mathcal{O}^{\mathsf{pre}}$ on $\complex^{n}$ is defined to be the cokernel sheaf of the following exact sequence:
+  We have a sheaf $\mathscr{O}^{\mathsf{pre}}$ on $\complex^{n}$ is defined to be the cokernel sheaf of the following exact sequence:
 	\begin{center}
 		\begin{tikzcd}
-			{\mathcal{Hol}^{\oplus m}} \arrow{r} & {\mathcal{Hol}} \arrow{r} & {\mathcal{O}^{\mathsf{pre}}} \arrow{r} & 0,
+			{\mathscr{Hol}^{\oplus m}} \arrow{r} & {\mathscr{Hol}} \arrow{r} & {\mathscr{O}^{\mathsf{pre}}} \arrow{r} & 0,
 		\end{tikzcd}
 	\end{center}
-	where the first arrow, on $U$, is given by $(a_{1},\dots,a_{m}) \mapsto f_{1}|_{U}\smul a_{1}+\cdots+f_{m}|_{U}\smul a_{m}$ where $a_{i} \in \sections{\mathcal{Hol}}{U}$ and $f_{i}$ generates $\ker\theta$
+	where the first arrow, on $U$, is given by $(a_{1},\dots,a_{m}) \mapsto f_{1}|_{U}\smul a_{1}+\cdots+f_{m}|_{U}\smul a_{m}$ where $a_{i} \in \sections{\mathscr{Hol}}{U}$ and $f_{i}$ generates $\ker\theta$
 \end{definition}
 
 \begin{lemma}
-	On generalized polydiscs $\Delta_{1} \subseteq \Delta_{2}$, $\sections{\mathcal{O}^{\mathsf{pre}}}{\Delta_{1}}$ is isomorphic to \[\quotient{\sections{\mathcal{Hol}}{\Delta_{1}}}{\ker\theta\smul\sections{\mathcal{Hol}}{\Delta_{1}}}\] and the restriction map $\sections{{\mathcal{O}^{\mathsf{pre}}}}{\Delta_{2}} \to \sections{{\mathcal{O}^{\mathsf{pre}}}}{\Delta_{1}}$ is the restriction map
+	On generalized polydiscs $\Delta_{1} \subseteq \Delta_{2}$, $\sections{\mathscr{O}^{\mathsf{pre}}}{\Delta_{1}}$ is isomorphic to \[\quotient{\sections{\mathscr{Hol}}{\Delta_{1}}}{\ker\theta\smul\sections{\mathscr{Hol}}{\Delta_{1}}}\] and the restriction map $\sections{{\mathscr{O}^{\mathsf{pre}}}}{\Delta_{2}} \to \sections{{\mathscr{O}^{\mathsf{pre}}}}{\Delta_{1}}$ is the restriction map
 	\[
 		\mathrm{res} :
-		\quotient{\sections{\mathcal{Hol}}{\Delta_{2}}}{\ker\theta\smul\sections{\mathcal{Hol}}{\Delta_{2}}} \to
-		\quotient{\sections{\mathcal{Hol}}{\Delta_{1}}}{\ker\theta\smul\sections{\mathcal{Hol}}{\Delta_{1}}}
+		\quotient{\sections{\mathscr{Hol}}{\Delta_{2}}}{\ker\theta\smul\sections{\mathscr{Hol}}{\Delta_{2}}} \to
+		\quotient{\sections{\mathscr{Hol}}{\Delta_{1}}}{\ker\theta\smul\sections{\mathscr{Hol}}{\Delta_{1}}}
 	\]
 	defined by $[f] \mapsto [f\mid_{U}]$.
 \end{lemma}
@@ -285,43 +285,43 @@ The following terminology is nonstandard.
 	This lemma is going to be hard. Uses coherent analytic sheaves, Cartan's Theorem, Stein manifold, etc. The author of \cite[page~108]{neeman2007algebraic} tells us to look at \cite[page~136, definition 2; page 243, theorem 2]{gunning2022analytic}.
 \end{proof}
 
-% % {\bf The following might to be a good idea in formalisation.} I will define $\an{\mathcal{O}_{X}}$ by defining it only on basis, then extend it. For arbitrary open subsets $U \subseteq V$, we have the following
+% % {\bf The following might to be a good idea in formalisation.} I will define $\an{\mathscr{O}_{X}}$ by defining it only on basis, then extend it. For arbitrary open subsets $U \subseteq V$, we have the following
 % % \begin{center}
 % %   \begin{tikzcd}
-% %    \complex[X_{1},\dots, X_{n}] \arrow[hookrightarrow, red]{r} & \sections(\mathcal{Hol}, \complex^n) \arrow[red]{r}{\mathrm{res}} & \sections(\mathcal{Hol}, U) \arrow[two heads]{r} & \quotient{\sections(\mathcal{Hol}, U)}{\ker\theta\smul\sections(\mathcal{Hol}, U)},
+% %    \complex[X_{1},\dots, X_{n}] \arrow[hookrightarrow, red]{r} & \sections(\mathscr{Hol}, \complex^n) \arrow[red]{r}{\mathrm{res}} & \sections(\mathscr{Hol}, U) \arrow[two heads]{r} & \quotient{\sections(\mathscr{Hol}, U)}{\ker\theta\smul\sections(\mathscr{Hol}, U)},
 % %   \end{tikzcd}
 % % \end{center}
-% % where the first arrow is an inclusion since all polynomials are holomorphic; the second arrow is the restriction map of $\mathcal{H}$. Here $\ker\theta\smul \sections(\mathcal{Hol}, U)$ is the image of $\ker\theta$ of the composition of the two read arrows.
+% % where the first arrow is an inclusion since all polynomials are holomorphic; the second arrow is the restriction map of $\mathscr{H}$. Here $\ker\theta\smul \sections(\mathscr{Hol}, U)$ is the image of $\ker\theta$ of the composition of the two read arrows.
 % % We can also define the restriction of  Unfortunately, this is not a sheaf on $\complex^{n}$, but it is indeed a sheaf on the basis of generalized polydiscs of $\complex^{n}$
 
 \begin{lemma}\label{thm:trivial-preanalytification-sheaf-on-generalized-polydisc-outside}
   Let $x$ be a point not in $\an{\specop{S}}$, in another word, $x \in \complex^{n} - \an{\specop{S}}$.
-  There is an open subset $x \in U \subseteq \complex^{n}$ such that for any generalized polydiscs $\Delta \subseteq U$, we have $\sections{\mathcal{O}^{\mathsf{pre}}}{\Delta} = 0$.
+  There is an open subset $x \in U \subseteq \complex^{n}$ such that for any generalized polydiscs $\Delta \subseteq U$, we have $\sections{\mathscr{O}^{\mathsf{pre}}}{\Delta} = 0$.
 \end{lemma}
 \begin{proof}
-  By \Cref{thm:maxspecop-alg-hom-annihilate}, $x$ is not in the image of $\an{\specop{S}}$ precisely when at least one of the $f_{i}(x) \ne 0$. Say it's the first one. Then, there is some open neighbourhood $U$ around $x$ such that $f_{1}\mid_{U}$ is nowhere zero, i.e.\ invertible. Thus for any generalized polydisc $\Delta \subseteq U$, we have that the ideal $\ker\theta\smul\sections{\mathcal{Hol}}U$ is everything so that $\sections{\mathcal{O}^{pre}}{\Delta}\cong\quotient{\sections{\mathcal{Hol}}{\Delta}}{\ker\theta\smul\sections{\mathcal{Hol}}{\Delta}}$ is trivial.
+  By \Cref{thm:maxspecop-alg-hom-annihilate}, $x$ is not in the image of $\an{\specop{S}}$ precisely when at least one of the $f_{i}(x) \ne 0$. Say it's the first one. Then, there is some open neighbourhood $U$ around $x$ such that $f_{1}\mid_{U}$ is nowhere zero, i.e.\ invertible. Thus for any generalized polydisc $\Delta \subseteq U$, we have that the ideal $\ker\theta\smul\sections{\mathscr{Hol}}U$ is everything so that $\sections{\mathscr{O}^{pre}}{\Delta}\cong\quotient{\sections{\mathscr{Hol}}{\Delta}}{\ker\theta\smul\sections{\mathscr{Hol}}{\Delta}}$ is trivial.
 \end{proof}
-\begin{corollary}[$\mathcal{O}^{\mathsf{pre}}$ is supported in $\an{\specop{S}}$]\label{thm:trivial-preanalytification-sheaf-on-outside-open-set}
+\begin{corollary}[$\mathscr{O}^{\mathsf{pre}}$ is supported in $\an{\specop{S}}$]\label{thm:trivial-preanalytification-sheaf-on-outside-open-set}
 \uses{thm:trivial-preanalytification-sheaf-on-generalized-polydisc-outside}
-  Let $V \subseteq \complex^{n}-\an{\specop S}$ be an open set in $\complex^{n}$, then the sections of $\mathcal{O}^{\mathsf{pre}}$ on $V$ is trivial.
+  Let $V \subseteq \complex^{n}-\an{\specop S}$ be an open set in $\complex^{n}$, then the sections of $\mathscr{O}^{\mathsf{pre}}$ on $V$ is trivial.
 \end{corollary}
 \begin{proof}
-  Let $\sigma \in \sections{\mathcal{O}^{\mathsf{pre}}}{V}$, we want to show that $\sigma(x) = 0$ for all $x \in V$. By \Cref{thm:trivial-preanalytification-sheaf-on-generalized-polydisc-outside}, there exists some open neightbourhood $x \in U \subseteq V$\footnote{if $U$ is not a subset of $V$, then use $U \cap V$} such that
-  sections of $\mathcal{O}^{\mathsf{pre}}$ on any generalized polydiscs contained in $U$ is trivial. Thus we can cover $V$ by a family of generalized polydiscs $\Delta_{i}$ such that $\sigma\mid_{\Delta_{i}}$ are all zero; therefore by sheaf axioms, $\sigma$ is zero.
+  Let $\sigma \in \sections{\mathscr{O}^{\mathsf{pre}}}{V}$, we want to show that $\sigma(x) = 0$ for all $x \in V$. By \Cref{thm:trivial-preanalytification-sheaf-on-generalized-polydisc-outside}, there exists some open neightbourhood $x \in U \subseteq V$\footnote{if $U$ is not a subset of $V$, then use $U \cap V$} such that
+  sections of $\mathscr{O}^{\mathsf{pre}}$ on any generalized polydiscs contained in $U$ is trivial. Thus we can cover $V$ by a family of generalized polydiscs $\Delta_{i}$ such that $\sigma\mid_{\Delta_{i}}$ are all zero; therefore by sheaf axioms, $\sigma$ is zero.
 \end{proof}
 
 \begin{corollary}
 \uses{thm:trivial-preanalytification-sheaf-on-outside-open-set}
   Let $V\subseteq\complex^{n}$ be an open subset then we have an isomorphism
   \[
-\sections{\mathcal{O}^{\mathsf{pre}}}{V \cup (\complex^{n} - \an{\specop S})} \cong \sections{\mathcal{O}^{\mathsf{pre}}}{V}
+\sections{\mathscr{O}^{\mathsf{pre}}}{V \cup (\complex^{n} - \an{\specop S})} \cong \sections{\mathscr{O}^{\mathsf{pre}}}{V}
   \]
 \end{corollary}
 \begin{proof}
   Write $A := \complex^{n}-\an{\specop S}$, we need to prove the restriction map from $V \cup A$ to $V$ is both injective and surjective.
   \begin{itemize}
-	\item Injectivity: suppose a section $\sigma \in \sections{\mathcal{O}^{\mathsf{pre}}}{V \cup A}$ is in the kernel of the restriction map, in another word, $\sigma\mid_{V}$ is zero. Then if we cover $V \cup A$ by $V$ and $A$, we would know that $\sigma\mid_{A}$ is zero as well\footnote{by \Cref{thm:trivial-preanalytification-sheaf-on-outside-open-set} and that $A$ is open}, so by sheaf axiom, $\sigma$ is zero.
-	\item Surjectivity: let $\sigma$ be a section in $\sections{\mathcal{O}^{\mathsf{pre}}}{V}$, then we can glue $\sigma$ and $0 \in \sections{\mathcal{O}^{\mathsf{pre}}}{A}$ because $\sigma\mid_{V \cap A}$ must be zero, since $\sections{\mathcal{O}^{\mathsf{pre}}}{V\cap A}$ is trivial by \Cref{thm:trivial-preanalytification-sheaf-on-outside-open-set}.
+	\item Injectivity: suppose a section $\sigma \in \sections{\mathscr{O}^{\mathsf{pre}}}{V \cup A}$ is in the kernel of the restriction map, in another word, $\sigma\mid_{V}$ is zero. Then if we cover $V \cup A$ by $V$ and $A$, we would know that $\sigma\mid_{A}$ is zero as well\footnote{by \Cref{thm:trivial-preanalytification-sheaf-on-outside-open-set} and that $A$ is open}, so by sheaf axiom, $\sigma$ is zero.
+	\item Surjectivity: let $\sigma$ be a section in $\sections{\mathscr{O}^{\mathsf{pre}}}{V}$, then we can glue $\sigma$ and $0 \in \sections{\mathscr{O}^{\mathsf{pre}}}{A}$ because $\sigma\mid_{V \cap A}$ must be zero, since $\sections{\mathscr{O}^{\mathsf{pre}}}{V\cap A}$ is trivial by \Cref{thm:trivial-preanalytification-sheaf-on-outside-open-set}.
   \end{itemize}
 \end{proof}
 
@@ -329,13 +329,13 @@ The following terminology is nonstandard.
   The analytification $\an{\sheafOfSpec{S}}$ of $\sheafOfSpec{S}$ is a presheaf on $\an{\specop S}$ defined by the following:
   \begin{itemize}
 	\item For any open set $U \subseteq \an{\specop S}$, we define the sections $\sections{\an{\sheafOfSpec{S}}}{U}$ to be
-		  $$\sections{\mathcal{O}^{\mathsf{pre}}}{U \cup \left(\complex^{n}-\an{\specop S}\right)}.$$
-	\item For any open sets $U \subseteq V \subseteq \an{\specop{S}}$, we define the restriction map of $\an{\sheafOfSpec{S}}$ from $V$ to $U$ is the restriction map of $\mathcal{O}^{\mathsf{pre}}$ from $V \cup \left(\complex^{n}-\an{\specop S}\right)$ to $U \cup \left(\complex^{n}-\an{\specop{S}}\right)$.
+		  $$\sections{\mathscr{O}^{\mathsf{pre}}}{U \cup \left(\complex^{n}-\an{\specop S}\right)}.$$
+	\item For any open sets $U \subseteq V \subseteq \an{\specop{S}}$, we define the restriction map of $\an{\sheafOfSpec{S}}$ from $V$ to $U$ is the restriction map of $\mathscr{O}^{\mathsf{pre}}$ from $V \cup \left(\complex^{n}-\an{\specop S}\right)$ to $U \cup \left(\complex^{n}-\an{\specop{S}}\right)$.
   \end{itemize}
-This defines a presheaf, the satisfaction of sheaf axioms are essentially from that of $\mathcal{O}^{\mathsf{pre}}$.
+This defines a presheaf, the satisfaction of sheaf axioms are essentially from that of $\mathscr{O}^{\mathsf{pre}}$.
 \end{definition}
 
-\begin{remark}[Independence of the generators $f_{1},\dots, f_{m}$] Though the definition of $\mathcal{O}^{\mathsf{pre}}$ explicity uses $f_{i}$'s, we see that on the basis of generalized polydiscs, the sections on a generalized polydisc is $\quotient{\sections{\mathcal{Hol}}{\Delta}}{\ker\theta\smul\sections{\mathcal{Hol}}{\Delta}}$ which does not mention any generators. Since two sheaves are isomorphic if their sections on a basis are isomorphic, we must conclude that $\mathcal{O}^{\mathsf{pre}}$ is independent of the choice of $f_{1},\dots,f_{m}$ as well. But we don't know yet if the construction is independent from the choice of $a_{1},\dots, a_{m}$.
+\begin{remark}[Independence of the generators $f_{1},\dots, f_{m}$] Though the definition of $\mathscr{O}^{\mathsf{pre}}$ explicity uses $f_{i}$'s, we see that on the basis of generalized polydiscs, the sections on a generalized polydisc is $\quotient{\sections{\mathscr{Hol}}{\Delta}}{\ker\theta\smul\sections{\mathscr{Hol}}{\Delta}}$ which does not mention any generators. Since two sheaves are isomorphic if their sections on a basis are isomorphic, we must conclude that $\mathscr{O}^{\mathsf{pre}}$ is independent of the choice of $f_{1},\dots,f_{m}$ as well. But we don't know yet if the construction is independent from the choice of $a_{1},\dots, a_{m}$.
 \end{remark}
 
 %%% Local Variables:
